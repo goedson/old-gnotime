@@ -7,17 +7,17 @@
     It can generate reports and billing invoices 
     based on that time.">
 <meta name="keywords" content="gnome, todo, to-do, time tracker,
-    diary, journal, invoice, billing, reports, gtt">
+    diary, journal, PIM, consultant billing, reports, gtt, linux">
 
 </head>
 <body fgcolor=#000000 bgcolor=#ffffff>
 <h1>GnoTime (formerly known as GTT) - The Gnome Time Tracker</h1>
+
 <div align="right">
 <A href="http://sourceforge.net"> 
 <IMG src="http://sourceforge.net/sflogo.php?group_id=55463&amp;type=5" 
 width="210" height="62" border="0" alt="SourceForge Logo"></A>
 </div>
-<br>
 
 The Gnome Time Tracker is a to-do list/diary/journal tool
 that can track the amount of time spent on projects, and,
@@ -27,6 +27,7 @@ track bug reports, keep a diary of activities, provide
 weekly status reports to management, and even as a consultant billing
 system.  The reason it can be used for all of these things
 is that it supports five basic, simple features:
+
      <br><br>
 <ul>
 <li>Multiple <b>To-Do Lists</b> that can be sorted by the 
@@ -63,7 +64,6 @@ is that it supports five basic, simple features:
     This is in addition to assigning an urgency/importance
     to each project, as well as a status (completed/in-progress
     not-started/canceled).
-
      <br><br>
 <li>A half-dozen different HTML <b>Reports</b> that can
     slice and dice your lists.  There's a Journal report
@@ -85,8 +85,11 @@ is that it supports five basic, simple features:
 </ul>
 
 
-<h2>More Details</h2>
-We'd like to tell you a bit more about some of the features:
+<h2>More About Some of These Features</h2>
+We'd like to tell you a bit more about some of the features.
+But first, we want to tell you that GnoTime is Free Software,
+distributed under the GPL License, for the Linux, Mac OSX and
+other Unix desktops.  No, it does *not* for MS Windows.  Sorry.
 <p>
 <dl>
 <dt><b>Simple GUI, Simple Navigation</b>
@@ -261,6 +264,44 @@ Here's a screenshot under Macintosh OSX Fink:
 <img src="mac-osx.png">
 <br><br>
 
+<h1>Getting GnoTime</h1>
+Your favorite distribution (Debian, RedHat/Fedora, SUSE, Fink) already
+includes pre-compiled binaries of GnoTime, and you should probably
+be searching those out, and installing and working with those.
+That way, you at least have some gaurentee that its been tested 
+and is known to work with your system.
+<p>
+If you are adventurous, and know how to compile from source, 
+and absolutely must have the latest and greatest version, then
+visit 
+<a href="http://sourceforge.net/projects/gttr/">http://sourceforge.net/projects/gttr/</a>
+to get the sourcecode tarballs, instructions for CVS access, etc.
+
+<h2>Reporting Bugs, Requesting Features, Submitting Patches</h2>
+If you found a bug, please rest assured that we will 
+<b><i>not</i></b> fix it unless you report it (and even then,
+it may take us a while).  To report a bug, please visit the
+<a href="http://sourceforge.net/projects/gttr/">SourceForge 
+project site</a>, and follow the links.
+The same remarks apply for feature requests and patches.
+The best place to submit a patch is to sourceforge.  That
+way, we won't loose track of it.
+
+<h2>Mailing Lists</h2>
+If you have questions, want to make comments, or engage in 
+general discussions, you can subscribe to the mailing list,
+or you can post to the discussion bulliten-board.  You can get
+to either through the 
+<a href="http://sourceforge.net/projects/gttr/">SourceForge 
+project page</a>.
+
+<h2>Web Site Mirrors</h2>
+There are two web site mirrors:
+<ul>
+<li><a href="http://www.linas.org/linux/gtt/gtt.html">http://www.linas.org/linux/gtt/gtt.html</a>
+<li><a href="http://gttr.sourceforge.net/">http://gttr.sourceforge.net/</a>
+</ul>
+
 <h1>News</h1>
 The latest releases continues to focus on usability and convenience 
 features, making GnoTime easier to use and thus more powerful.
@@ -382,14 +423,15 @@ features, making GnoTime easier to use and thus more powerful.
 </dl>
 <br><br>
 
-<h1>Technology Choices</h1>
+<p>
+<h1>Technology Choices/Overview</h1>
 GnoTime is currently written in C and Scheme. C is used to implement 
 all of the core functions, whereas Scheme is used to generate the 
 HTML reports.  The Scheme/HTML combo was choosen in order to make
 it easy to customize reports, while allowing the result to be easily
 viewed in a browser, sent by email, etc.  The GUI system is 
 all in Gnome, using the Glade interfce designer.
-The file format is in XML, folloowing current trends.
+The file format is in XML, following current trends.
 <br><br>
 
 
@@ -413,25 +455,56 @@ GnoTime still needs some serious work in several areas. Help is needed.
 <dt><b>Better Report Generation</b>
 <dd>Certain reports, especially the invoice reports, would benefit
     from a better report generator.  I'd like to add buttons to
-    show/hide completed projects, etc.
-
+    show/hide completed projects, etc.  If nothing else, the 
+    set of things that are SQL-queriable needs to be expanded.
     <br><br>
+
 <dt><b>GnuCash Integration</b>
 <dd>It should be possible to import GnoTime invoices into GnuCash.
     <br><br>
+
 <dt><b>SQL Support</b>
 <dd>A frequent request is for a multi-user version of GnoTime.
     A basic level of multi-user capabilities can be achieved by
-    adding support for an SQL backend.  This should be relatively easy,
-    as all of the project and journal functions were segregated when
-    the XML file format was added.
+    adding support for an SQL backend.  We've got some neat
+    ideas on how to maek this work in an easy and future-proof
+    manner.  We're planning on using
+    <a href="http://dwi.sourceforge.net">DWI/DUI</a>.
+    This work might be just around the corner.
     <br><br>
+
 <dt><b>Web Tinkering</b>
 <dd>GnoTime already uses some of the buzzwords of the web: HTML and XML.
     That makes it an interesting playground for experimenting with
     web-enabling technology.  Can it be made into a client-server
-    system, running on the open internet?
+    system, running on the open internet? We think it can.
+    I'm planning on tinkering 
+    <a href="http://dwi.sourceforge.net">DWI/DUI</a> and 
+    <a href="http://qof.sourceforge.net">QOF</a> into this.
     <br><br>
+
+<dt><b>Super-Configurability</b>
+<dd>The third prong of my goofing off with 
+    <a href="http://dwi.sourceforge.net">DWI/DUI</a> and 
+    <a href="http://qof.sourceforge.net">QOF</a> is to make 
+    the core objecs super-configurable.  This means that
+    if you don't like the status that a project can have,
+    then you can change the menu system.  Want to make 
+    GnoTime look more like a bug-tracker, such as Bugzilla?
+    You'll be able to do that. Someday. Maybe.  Want to 
+    make it look like a call-center/support tool? Sure.
+    How about a simpler employee time-card system. Yep.
+    GnoTime is a partly a finished product, and partly 
+    a research vehicle, and the above are some of the 
+    directions I want to explore.
+    See the list of 
+    <a href="http://www.linas.org/linux/pm.html">
+    Linux Bug Tracking and Project Management Tools</a>
+    to see how the rainbow of possibilities is really 
+    a rainbow of very similar things that just look 
+    very different.
+    <br><br>
+
 <dt><b>Project Management Integration</b>
 <dd>It might be interesting to have GnoTime work as applet or 
     embedable component for an extended/sophisticated project 
@@ -447,30 +520,6 @@ GnoTime still needs some serious work in several areas. Help is needed.
 </dl>
 
 
-
-<h1>Getting GnoTime</h1>
-Visit <a href="http://sourceforge.net/projects/gttr/">http://sourceforge.net/projects/gttr/</a> and follow the links to download tarballs, browse CVS, etc.
-
-<p>
-Please use GnoTime version 2.1.8 or later, as available on sourceforge.
-Please avoid the gnome-1.4 version, as that version has some known
-bugs, limitations and usability problems that won't be getting fixed.
-
-<h2>Bug Tracker</h2>
-The recommended bug tracker at this point is the one located at
-sourceforge.  Go to the sourceforge project page, and work from there.
-
-<h2>Web Site Mirrors</h2>
-There are two web site mirrors:
-<ul>
-<li><a href="http://www.linas.org/linux/gtt/gtt.html">http://www.linas.org/linux/gtt/gtt.html</a>
-<li><a href="http://gttr.sourceforge.net/">http://gttr.sourceforge.net/</a>
-</ul>
-
-<h2>Mailing Lists</h2>
-There is a mailing list; see the sourceforge project page for info 
-on subscribing.
-<p>
 <h2>Similar/Different Projects</h2>
 
 <ul>
@@ -480,7 +529,23 @@ on subscribing.
     (actualy, gtk2/perl).
 <li><a href="http://www.dklevine.com/general/software/tc1000/jarnal.htm">
     Jarnal</a>, a Java-based note-taking tablet app.
-   
+<li><a href="http://qballcow.nl/index.php?s=4">QBall's GToDo</a>   
+    is a simple Gnome2 to-do list application.
+<li><a href="http://www.radix.net/~cknudsen/gtimer/">GTimer</a>,
+    an older gtk-1.2 timer application.
+<li><a href="http://www.ph.unimelb.edu.au/~ssk/kde/karm/karm.html">KArm</a>
+    is a simple KDE/Qt-based time-tracker.
+    Aee also <a href="http://www.blackie.dk/karm/">this website</a>.
+<li><a href="http://www.ele.auckland.ac.nz/~swon074/ptt-web/ptt.html">PTT</a>
+    anotehr KDE-based time tracker.
+<li><a href="http://www.alvestrand.no/titrax/TimeTracker.html">Titrax</a>
+    is a very old (early/mid 90's) X-Windows time tracking tool.
+    This is a nice historical snapshot providing a glimpse of the
+    way things used to be in the Unix world back then.
+<li><a href="http://www.linuxlinks.com/Software/ProductivityTools/Timers/index.shtml">LinuxLinks</a>
+    provides a <b><i>huge</i></b> list of Linux timer software.
+<li><a href="http://journyx.com/">Journyx</a>, an upscale, commercial
+    web-based time tracking and billing tool.
 </ul>
 
 
