@@ -101,7 +101,8 @@ We'd like to tell you a bit more about some of the features:
      <br><br>
 
 <dt><b>Auto-Merge/Cleanup of Short Intervals Support</b>
-<dd>
+<dd> We also try to unclutter a mess of timer stops/starts
+     by trying to clean up time-keeping cruft.
      Extremely short time intervals are automatically removed
      from the logs (the length is configurable).  
      Slightly longer but still short intervals
@@ -110,47 +111,46 @@ We'd like to tell you a bit more about some of the features:
      to turn these features off.
      <br><br>
 
-<dt><b>HTML-based Reports</b>
-<dd>The journal GUI is based on template HTML pages.  If you know
+<dt><b>User-Customizable HTML-based Reports</b>
+<dd>The journal/report GUI is based on template HTML pages.  If you know
      HTML, then you can create customized report pages.  Particularly
      handy for slapping the company logo and mailing address on the top 
      of the page, and generating a unique, custom look.
      User-defined reports (contained in <tt>ghtml</tt> files) 
      can be added to the
-     menus by typing in the filename into the 'new report' GUI dialog.
-     Typically, a 'user-defined report' is one with customized layout,
-     maybe a logo added, all-spiffed up &amp; such.
-
-     (Note: the HTML table layout architecture was fixed in version 
-     <tt>gnotime-2.1.4</tt>, thus allowing far more flexibility
-     and far prettier layout. The badness of the design is now gone.)
-
-     (A collection of pre-defined, fancy-loooking invoices are still needed).
+     menus by typing in the filename into the 'New Report' GUI dialog.
      <br><br>
-     A primitive query ability has been added and will be in version
-     2.1.8: it allows a range of dates to be used to determine which
-     projects to show.
+     Admittedly, hacking on HTML templates is not the easiest
+     thing in the world:  you can't (yet) customize reports
+     with a WYSIWYG eidtor (although we are contemplating one).
+     But we figure that HTML can't be that hard: the nerd in 
+     you will not be intimidated.  It might be a bit scary to
+     mention scheme at this point, but lets just say that
+     you can be totally ignorant of scheme and still be able
+     to do some pretty fancy customization, above and beyond
+     what HTML lets you do, by hacking on the scheme in the report
+     templates.
      <br><br>
-
-<dt><b>Inactivity Timeout</b>
-<dd>If the keyboard or mouse have been idle for more than a configurable
-    amount of time, then the project clock is automatically stopped.  
-    This prevents projects from accumulating time if you forget to 
-    stop them at the end of the day, or during lunch.  A popup then asks
-    if the project should be restarted, and allows the amount
-    of idle-time credited to the project to be easily adjusted.
+     Fresh in version 2.1.9 is the ability to embedd simple SQL 
+     queries in the report templates.  We know that many of you
+     power users know SQL, so we figure you'll like this.  The
+     SQL gives you the ability to query for only those projects/tasks
+     that meet a certain criteria, which is handy if you've got 
+     years worth of data and years worth of project lists and 
+     to-do items, and you want to just fish out the ones from 
+     last month.  
+     <br><br>
+     Disclaimer: we're still working on SQL support. It works,
+     but you can't yet query everything.
+     
      <br><br>
 
 <dt><b>Shell Commands</b>
 <dd>A shell command can be executed whenever a project timer is 
     started or stopped.  The project title, description and other 
-    parameters can be passed to the shell command.
-     <br><br>
-
-<dt><b>Scheme Extension Language</b>
-<dd>Scheme (as provided through the guile interpreter) is used as 
-     an extension language, although scheme
-     support is currently limited to report generation.
+    parameters can be passed to the shell command.  We don't know
+    what the hell you power users do with this feature; its 
+    been in GTT since the very earliest releases. 
      <br><br>
 
 <dt><b>XML File Format</b>
@@ -165,10 +165,101 @@ We'd like to tell you a bit more about some of the features:
     az bg ca cs da de el en_GB es et eu fi fr ga gl hu it ja ko lt lv ms nl
     nn no pl pt pt_BR ro ru sk sl sv ta tr uk vi wa zh_CN zh_TW
     </tt>
-    Translations are needed for the manual. (Actually, the manual needs 
-    a re-write).
+    Some of these translations need an update; they're quite old and
+    out of date. We need help here.
+    Translations are needed for the manual. Actually, the manual needs 
+    a complete re-write; its three years old, and doesn't discuss most 
+    of the newer features.
     <br><br>
 </dl>
+
+<h1>Screenshots</h1>
+The following screenshots are from the current Gnome2 version of
+GnoTime, unless otherwise noted.
+<br><br>
+The main window screen, showing all-time and daily totals:
+<br>
+<img src="gnome2-main-small.png">
+<br><br>
+
+The same main window screen, but with additional columns
+enabled to show project status.   Note the new notes-taking
+area at the bottom of the screen.
+<br>
+<img src="gnome2-main-notes.png">
+<br><br>
+
+The inactivity popup dialog, which triggers when
+the keyboard and mouse has been idle some period of time.
+Note how this allows a project to be credited with an 
+adjustable amount of time.  Being able to adjust the time
+credited directly, without having to fuss with menus and 
+GUI dialogs is a very handy feature when you are distracted by 
+interruptions.
+<br>
+<img src="gnome2-idle-timeout.png">
+<br><br>
+The dialog box for specifying project-planning status.
+The use of this diaolog is optional, but can be useful for 
+ranking the importance and urgency of to-do list items.
+Note the distinction between importance and urgency:
+An <b><i>important</i></b> task is one that must be done,
+sooner or later.  An <b><i>urgent</i></b> task should be
+done as soon as possible.
+<br>
+<img src="gnome2-proj-plan.png">
+<br><br>
+
+Below is the short-form view of journal entries
+(this screenshot is from the gnome-1.4.1 version).
+Note that this report is is generated as html, 
+displayed in a gtkhtml window.
+Clicking on the hot-links brings up a popup
+menu that allows you to cut, paste and edit the entries.
+
+You can create much better looking reports by modifying
+the html template for this report.  If you know html,
+this is easy to do.
+<br>
+<img src="journal.gif">
+<br><br>
+
+An invoice generated from the above journal.
+(this screenshot is from the gnome-1.4.1 version).
+Note that this report is is generated as html, 
+displayed in a gtkhtml window.
+Clicking on the hot-links brings up a popup
+menu that allows you to cut, paste and edit the entries.
+
+You can create much better looking reports by modifying
+the html template for this report.  If you know html,
+this is easy to do.
+
+<br>
+<img src="invoice.gif">
+<br><br>
+
+Individual time intervals may be modified.
+<br>
+<img src="ivl-props.gif">
+<br><br>
+
+Per-project billing rates can be specified ...
+<br>
+<img src="proj-rates.gif">
+<br><br>
+
+As well as how an individual task should be billed.
+<br>
+<img src="task-props.gif">
+<br><br>
+
+
+<h2>Works on Apple Mac OSX too</h2>
+Here's a screenshot under Macintosh OSX Fink:
+<br>
+<img src="mac-osx.png">
+<br><br>
 
 <h1>News</h1>
 The latest releases continues to focus on usability and convenience 
@@ -355,94 +446,6 @@ GnoTime still needs some serious work in several areas. Help is needed.
 
 </dl>
 
-
-<h1>Screenshots</h1>
-The following screenshots are from the current Gnome2 version of
-GnoTime, unless otherwise noted.
-<br><br>
-The main window screen, showing all-time and daily totals:
-<br>
-<img src="gnome2-main-small.png">
-<br><br>
-
-The same main window screen, but with additional columns
-enabled to show project status.   Note the new notes-taking
-area at the bottom of the screen.
-<br>
-<img src="gnome2-main-notes.png">
-<br><br>
-
-The inactivity popup dialog, which triggers when
-the keyboard and mouse has been idle some period of time.
-Note how this allows a project to be credited with an 
-adjustable amount of time.  Being able to adjust the time
-credited directly, without having to fuss with menus and 
-GUI dialogs is a very handy feature when you are distracted by 
-interruptions.
-<br>
-<img src="gnome2-idle-timeout.png">
-<br><br>
-The dialog box for specifying project-planning status.
-The use of this diaolog is optional, but can be useful for 
-ranking the importance and urgency of to-do list items.
-Note the distinction between importance and urgency:
-An <b><i>important</i></b> task is one that must be done,
-sooner or later.  An <b><i>urgent</i></b> task should be
-done as soon as possible.
-<br>
-<img src="gnome2-proj-plan.png">
-<br><br>
-
-Below is the short-form view of journal entries
-(this screenshot is from the gnome-1.4.1 version).
-Note that this report is is generated as html, 
-displayed in a gtkhtml window.
-Clicking on the hot-links brings up a popup
-menu that allows you to cut, paste and edit the entries.
-
-You can create much better looking reports by modifying
-the html template for this report.  If you know html,
-this is easy to do.
-<br>
-<img src="journal.gif">
-<br><br>
-
-An invoice generated from the above journal.
-(this screenshot is from the gnome-1.4.1 version).
-Note that this report is is generated as html, 
-displayed in a gtkhtml window.
-Clicking on the hot-links brings up a popup
-menu that allows you to cut, paste and edit the entries.
-
-You can create much better looking reports by modifying
-the html template for this report.  If you know html,
-this is easy to do.
-
-<br>
-<img src="invoice.gif">
-<br><br>
-
-Individual time intervals may be modified.
-<br>
-<img src="ivl-props.gif">
-<br><br>
-
-Per-project billing rates can be specified ...
-<br>
-<img src="proj-rates.gif">
-<br><br>
-
-As well as how an individual task should be billed.
-<br>
-<img src="task-props.gif">
-<br><br>
-
-
-<h2>Works on Apple Mac OSX too</h2>
-Here's a screenshot under Macintosh OSX Fink:
-<br>
-<img src="mac-osx.png">
-<br><br>
 
 
 <h1>Getting GnoTime</h1>
