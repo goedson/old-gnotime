@@ -21,11 +21,12 @@ width="210" height="62" border="0" align="right" alt="SourceForge Logo"></A>
 The Gnome Time Tracker is a to-do list/diary/journal tool
 that can track the amount of time spent on projects, and,
 among other things, generate reports and invoices based on 
-that time.  It's being used it to keep shopping lists, organize ideas, 
-track bug reports, keep a diary of activities, provide 
-weekly status reports to management, and even as a consultant billing
-system.  The reason it can be used for all of these things
-is that it supports five basic, simple features:
+that time.  It's being used it to keep shopping lists, 
+organize ideas, track bug reports, keep a diary of activities, 
+do some blogging, provide weekly status reports to management, 
+and even as a consultant billing system.  The reason it can 
+be used for all of these things is that it supports five basic, 
+simple features:
 
      <br><br>
 <ul>
@@ -157,7 +158,9 @@ other Unix desktops.  No, it does *not* for MS Windows.  Sorry.
 
 <dt><b>XML File Format</b>
 <dd>All project and journal data are stored in an XML file format.
-    This should simplify future interoperability and data access concerns.
+    The XML file accurately reflects the internal state of the 
+    GnoTime data, and therefore generic XML tools should be able
+    to perform interesting transformations on this data.
     <br><br>
 
 <dt><b>Multi-Language Support</b>
@@ -176,8 +179,9 @@ other Unix desktops.  No, it does *not* for MS Windows.  Sorry.
 </dl>
 
 <h1>Screenshots</h1>
-The following screenshots are from the current Gnome2 version of
-GnoTime, unless otherwise noted.
+Below are a couple of screenshots from the current 
+Gnome2 version of GnoTime. 
+<a href="screenshots.html">The screenshots pages shows more</a>.
 <br><br>
 The main window screen, showing all-time and daily totals:
 <br>
@@ -191,74 +195,9 @@ area at the bottom of the screen.
 <img src="gnome2-main-notes.png">
 <br><br>
 
-The inactivity popup dialog, which triggers when
-the keyboard and mouse has been idle some period of time.
-Note how this allows a project to be credited with an 
-adjustable amount of time.  Being able to adjust the time
-credited directly, without having to fuss with menus and 
-GUI dialogs is a very handy feature when you are distracted by 
-interruptions.
-<br>
-<img src="gnome2-idle-timeout.png">
-<br><br>
-The dialog box for specifying project-planning status.
-The use of this dialog is optional, but can be useful for 
-ranking the importance and urgency of to-do list items.
-Note the distinction between importance and urgency:
-An <b><i>important</i></b> task is one that must be done,
-sooner or later.  An <b><i>urgent</i></b> task should be
-done as soon as possible.
-<br>
-<img src="gnome2-proj-plan.png">
-<br><br>
-
-Below is the short-form view of journal entries
-(this screenshot is from the gnome-1.4.1 version).
-Note that this report is is generated as HTML, 
-displayed in a gtkhtml window.
-Clicking on the hot-links brings up a popup
-menu that allows you to cut, paste and edit the entries.
-
-You can create much better looking reports by modifying
-the HTML template for this report.  If you know HTML,
-this is easy to do.
-<br>
-<img src="journal.gif">
-<br><br>
-
-An invoice generated from the above journal.
-(this screenshot is from the gnome-1.4.1 version).
-Note that this report is is generated as HTML, 
-displayed in a gtkhtml window.
-Clicking on the hot-links brings up a popup
-menu that allows you to cut, paste and edit the entries.
-
-You can create much better looking reports by modifying
-the HTML template for this report.  If you know HTML,
-this is easy to do.
-
-<br>
-<img src="invoice.gif">
-<br><br>
-
-Individual time intervals may be modified.
-<br>
-<img src="ivl-props.gif">
-<br><br>
-
-Per-project billing rates can be specified ...
-<br>
-<img src="proj-rates.gif">
-<br><br>
-
-As well as how an individual task should be billed.
-<br>
-<img src="task-props.gif">
-<br><br>
-
-
 <h2>Works on Apple Mac OSX too</h2>
-Here's a screenshot under Macintosh OSX Fink:
+Well, sort-of.  Here's a screenshot of a port under Macintosh OSX Fink;
+unfortunately, this port was never finished/published.
 <br>
 <img src="mac-osx.png">
 <br><br>
@@ -389,7 +328,8 @@ features, making GnoTime easier to use and thus more powerful.
 
 <p>
 <h1>Technology Choices/Overview</h1>
-GnoTime is currently written in C and Scheme. C is used to implement 
+GnoTime is currently written mostly in C and a little bit of 
+<a href="http://www.schemers.org/">Scheme</a>. C is used to implement 
 all of the core functions, whereas Scheme is used to generate the 
 HTML reports.  The Scheme/HTML combo was chosen in order to make
 it easy to customize reports, while allowing the result to be easily
@@ -397,91 +337,17 @@ viewed in a browser, sent by email, etc.  The GUI system is
 all in Gnome, using the Glade interface designer.
 The file format is in XML, following current trends.
 <br><br>
+There are some interesting directions one could play with.
+For example, rather than creating reports with embedded 
+Scheme, one could try to use GnoTime's XML data format 
+as a mirror of its internal state, and then use 
+<a href="http://www.w3.org/DOM/">DOM</a> to extract 
+various parts out of it, and thus build reports that way.
+<br><br>
 
-
-<h1>Roadmap</h1>
-GnoTime still needs some serious work in several areas. Help is needed.
-<dl>
-<dt><b>GUI Enhancements</b>
-<dd>The GUI can be made simpler, easier and more powerful at the same
-    time.   This is my current development focus: improve usability
-    without adding feature bloat.  Easier said than done.
-    <br><br>
-
-<dt><b>E-Mail Reports</b>
-<dd>There are two things I'd like to do that one would think are real
-    easy: add a button allowing a report to be emailed, and add a button
-    to automatically view a report with your default web browser.
-    Amazingly, this is quite hard, and at this time, Gnome offers no
-    infrastructure to make this easy.
-    <br><br>
-
-<dt><b>Better Report Generation</b>
-<dd>Certain reports, especially the invoice reports, would benefit
-    from a better report generator.  I'd like to add buttons to
-    show/hide completed projects, etc.  If nothing else, the 
-    set of things that are SQL-queriable needs to be expanded.
-    <br><br>
-
-<dt><b>GnuCash Integration</b>
-<dd>It should be possible to import GnoTime invoices into GnuCash.
-    <br><br>
-
-<dt><b>SQL Support</b>
-<dd>A frequent request is for a multi-user version of GnoTime.
-    A basic level of multi-user capabilities can be achieved by
-    adding support for an SQL backend.  We've got some neat
-    ideas on how to make this work in an easy and future-proof
-    manner.  We're planning on using
-    <a href="http://dwi.sourceforge.net">DWI/DUI</a>.
-    This work might be just around the corner.
-    <br><br>
-
-<dt><b>Web Tinkering</b>
-<dd>GnoTime already uses some of the buzzwords of the web: HTML and XML.
-    That makes it an interesting playground for experimenting with
-    web-enabling technology.  Can it be made into a client-server
-    system, running on the open Internet? We think it can.
-    I'm planning on tinkering 
-    <a href="http://dwi.sourceforge.net">DWI/DUI</a> and 
-    <a href="http://qof.sourceforge.net">QOF</a> into this.
-    <br><br>
-
-<dt><b>Super-Configurability</b>
-<dd>The third prong of my goofing off with 
-    <a href="http://dwi.sourceforge.net">DWI/DUI</a> and 
-    <a href="http://qof.sourceforge.net">QOF</a> is to make 
-    the core objects super-configurable.  This means that
-    if you don't like the status that a project can have,
-    then you can change the menu system.  Want to make 
-    GnoTime look more like a bug-tracker, such as Bugzilla?
-    You'll be able to do that. Someday. Maybe.  Want to 
-    make it look like a call-center/support tool? Sure.
-    How about a simpler employee time-card system. Yep.
-    GnoTime is a partly a finished product, and partly 
-    a research vehicle, and the above are some of the 
-    directions I want to explore.
-    See the list of 
-    <a href="http://www.linas.org/linux/pm.html">
-    Linux Bug Tracking and Project Management Tools</a>
-    to see how the rainbow of possibilities is really 
-    a rainbow of very similar things that just look 
-    very different.
-    <br><br>
-
-<dt><b>Project Management Integration</b>
-<dd>It might be interesting to have GnoTime work as applet or 
-    embedable component for an extended/sophisticated project 
-    management system.  For example, it should be interesting to make
-    GnoTime a front end to something like 
-    <a href="http://www.gnu.org/software/toutdoux/en/index.html">TouxDoux</a>, 
-    or <a href="http://mrproject.codefactory.se/">MrProject</a>
-    or even the web/PHP-based 
-    <a href="http://dcl.sourceforge.net/">
-    Double Choco Latte</a>.  Alternately, GnoTime could
-    be integrated into simpler calendar/todo systems, such as Evolution. 
-
-</dl>
+<a href="roadmap.html">
+<big><b>Technology/Features Roadmap</b></big>
+</a>
 
 
 <h2>Similar/Different Projects</h2>
