@@ -213,6 +213,16 @@ features, making GnoTime easier to use and thus more powerful.
 </dl>
 <br><br>
 
+<h1>Technology Choices</h1>
+GnoTime is currently written in C and Scheme. C is used to implement 
+all of the core functions, whereas Scheme is used to generate the 
+HTML reports.  The Scheme/HTML combo was choosen in order to make
+it easy to customize reports, while allowing the result to be easily
+viewed in a browser, sent by email, etc.  The GUI system is 
+all in Gnome, using the Glade interfce designer.
+The file format is in XML, folloowing current trends.
+<br><br>
+
 
 <h1>Roadmap</h1>
 GnoTime still needs some serious work in several areas. Help is needed.
@@ -221,6 +231,14 @@ GnoTime still needs some serious work in several areas. Help is needed.
 <dd>The GUI can be made simpler, easier and more powerful at the same
     time.   This is my current development focus: improve usability
     without adding feature bloat.  Easier said than done.
+    <br><br>
+
+<dt><b>E-Mail Reports</b>
+<dd>There are two things I'd like to do that one would think are real
+    easy: add a button allowing a report to be emailed, and add a button
+    to automatically view a report with your default web browser.
+    Amazingly, this is quite hard, and at this time, Gnome ofers no
+    infrastructure to make this easy.
     <br><br>
 
 <dt><b>Better Report Generation</b>
