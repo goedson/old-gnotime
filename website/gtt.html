@@ -251,6 +251,44 @@ features, making GnoTime easier to use and thus more powerful.
 
     <br><br>
 <dl>
+<dt><b>New in the 2.2.2 release</b> (September 2005)
+<dd>This release includes over two dozen fixes to build, install
+    and operation issues. These include a fix to a major issue 
+    involving copying data files to a new computer. A short
+    summary of fixes include:
+    <ul>
+    <li>Build against QOF version 0.6.0, if available.
+    <li>Fix issue where yelp doesn't display an entry for gnotime 
+        when browsing because it doesn't recognize the <subject> entry
+    <li>Fix sourceforge bug [ 799077 ] projects blanked when first time user
+        tries to sort
+    <li>fix broken leap-year calculation, leading to bugs
+        sourceforge bugs [ 983408 ]  and [ 1114205 ]
+    <li>Fix crash due to hoverhelp timer popping after
+        a report window is closed.
+    <li>Change activity report to display
+        date/time in two distinct html table columns (prettier alignment)
+    <li>Bug fix: sourceforge bug report fixed
+        [ 877193 ] toolbar won't go to/stay in text-only mode
+    <li>Bug fix: editing time brings up wrong report
+    <li>fedora .spec file
+        is out of date and rpm cannot build rpm
+    <li>Fix bug involving copy of old gnotime files to a new machine
+        on which gnotime has never been run before.
+    <li>Fix sourceforge bug [ 1276458 ] "Empty" appears in diary entry
+    <li>Apply sourceforge patch 1176719 Extensible fix for gtkhtml3 building
+    <li>Apply 1171394 Adds separate timeout for "No Project" dialog
+    <li>Apply sourceforge patch 085911 Add "-" value for status field
+    <li>Apply sourceforge patch 074658 Add wordwrapping to diary entry boxes
+    <li>Apply sourceforge patch 1074458 Fix a crash when invoking help
+    <li>Apply sourceforge patch 1038701 Fix to Activity item in popup menu
+    <li>Apply sourceforge patch 1027582 Build system update for qof inclusion
+    <li>Fix idle time so that it works with Linux 2.6 kernel /proc/interrupts
+    <li>use %e to see the estimated sizing of a project in the logfiles
+    <li>Apply new pt_BR translation from Goedson Teixeira Paixao
+    <li> Fix for Debian Bug #250776, change widget visibility
+          in the edit interval dialog
+    </ul>
 <dt><b>New in the 2.2.0 release</b> (April 2004)
 <dd>This release sports a brand-new look-n-feel for the reports,
     together with improved URL support.
@@ -275,9 +313,9 @@ features, making GnoTime easier to use and thus more powerful.
     <li> Fix old, multiple scheme bugs affecting billing reports.
     <li> Provides 'infinite undo' for cut projects.
     <li> Keyboard cut (ctrl-x) fixed so that it cuts only if project
-       window has focus.
+         window has focus.
     <li> Can now specify day-of-week for the start of a new week.
-       Also, end-of-day need not be midnight - its now configurable.
+         Also, end-of-day need not be midnight - its now configurable.
     <li> Remove obsolete menu entries (clear daily counters)
     <li> Fix flyover help on HTML reports
     <li> Fix order of yesterday/today columns.
