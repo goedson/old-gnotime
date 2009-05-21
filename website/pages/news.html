@@ -1,0 +1,259 @@
+<!-- #include file="header.html" -->
+              
+                  <div id="supportingText">
+                    <div id="explanation_news">
+                        <h3><span>News</span></h3>
+                        <p class="p1"><span>The latest releases continues to focus on usability and convenience features, making GnoTime easier to use and thus more powerful.</span></p>
+                        <h4><span>New in the 2.3.0 Release (February 2008)</span></h4>
+                        <p class="p1">
+                        <span>The main changes in this release are:
+                            <ul>
+                            <li> a new implementation of the projects tree using the GtkTreeView 
+                                component which fixes a lot of the bugs regarding the projects 
+                                tree manipulation and prepares the way for many customizations 
+                                in future releases. 
+                            </li><li> an initial implementation of a tray icon that displays timer status 
+                                and allows the user to toggle the timer by clicking on it. 
+                            </li><li> a rewrite of the idle detection using the XScreenSaver extension and 
+                                of the timer system to make it more system power conservation 
+                                friendly. 
+                            </li><li> port of the report system to use guile version 1.8. 
+                            </li><li> many changes in the configure script, including porperly checking for 
+                                guile and gconf and version of available DBUS. 
+                            </li><li> removal of some deprecated APIs usage. 
+                            </li>
+                            </ul>
+                        </span>
+                        </p>
+                        <p class="p1">
+                            <span>In addition, many bugs have been fixed, including: 
+                                <ul>
+                                    <li> broken behavior of drag-and-drop (#1856268) 
+                                    </li><li> compiles but crashes on startup in fedora core 5 (#1802501) 
+                                    </li><li> activity journal truncates seconds (#1706365) 
+                                    </li><li> green bar flickers when value changes (#1171204) 
+                                    </li><li> dragging project to make sub-project will not scroll (#831808)
+                                    </li>
+                                </ul>
+                            </span>
+                        </p>
+                        
+                        <!--TODO Format this part to be CSS compliant-->
+                        <p class="p1">
+                        <span>
+                        <b>New in the 2.2.3 release</b> (September 2007)
+
+                        </dt><dd>This release brings better internationalization in reports with locale 
+                        based formating of times and monetary values. The newly added support 
+                        for DBus messages allows users to start/stop the timer and save/reload 
+                        the data file from the command line using the gnotime-remote 
+                        script. Also, an update user's manual covers most of the features 
+                        available in this version. In addition, many bugs have been fixed, 
+                        including: 
+                        
+                        <ul>
+                        <li> Crash when saving to full filesystem (#1548248) 
+                        </li><li> Day of century calculation error causing skipped day in reports 
+                        </li><li> Conflicting keybindings (#1639477) 
+                        </li><li> Invoice report doesn't work in locales other than C 
+                        </li><li> Hidden question dialog when overwriting file during report saving 
+                        </li></ul>
+                        
+                        </dd><dt><b>New in the 2.2.2 release</b> (September 2005)
+                        
+                        </dt><dd>This release includes over two dozen fixes to build, install
+                            and operation issues. These include a fix to a major issue 
+                            involving copying data files to a new computer. A short
+                            summary of fixes include:
+                            <ul>
+                            <li>Build against QOF version 0.6.0, if available.
+                            </li><li>Fix issue where yelp doesn't display an entry for gnotime 
+                                when browsing because it doesn't recognize the <subject> entry
+                            </subject></li><li>Fix sourceforge bug [ 799077 ] projects blanked when first time user
+                                tries to sort
+                            </li><li>fix broken leap-year calculation, leading to bugs
+                                sourceforge bugs [ 983408 ]  and [ 1114205 ]
+                            </li><li>Fix crash due to hoverhelp timer popping after
+                                a report window is closed.
+                            </li><li>Change activity report to display
+                                date/time in two distinct html table columns (prettier alignment)
+                            </li><li>Bug fix: sourceforge bug report fixed
+                                [ 877193 ] toolbar won't go to/stay in text-only mode
+                            </li><li>Bug fix: editing time brings up wrong report
+                            </li><li>fedora .spec file
+                                is out of date and rpm cannot build rpm
+                            </li><li>Fix bug involving copy of old gnotime files to a new machine
+                                on which gnotime has never been run before.
+                            </li><li>Fix sourceforge bug [ 1276458 ] "Empty" appears in diary entry
+                            </li><li>Apply sourceforge patch 1176719 Extensible fix for gtkhtml3 building
+                            </li><li>Apply 1171394 Adds separate timeout for "No Project" dialog
+                            </li><li>Apply sourceforge patch 085911 Add "-" value for status field
+                            </li><li>Apply sourceforge patch 074658 Add wordwrapping to diary entry boxes
+                            </li><li>Apply sourceforge patch 1074458 Fix a crash when invoking help
+                            </li><li>Apply sourceforge patch 1038701 Fix to Activity item in popup menu
+                            </li><li>Apply sourceforge patch 1027582 Build system update for qof inclusion
+                            </li><li>Fix idle time so that it works with Linux 2.6 kernel /proc/interrupts
+                            </li><li>use %e to see the estimated sizing of a project in the logfiles
+                            </li><li>Apply new pt_BR translation from Goedson Teixeira Paixao
+                            </li><li> Fix for Debian Bug #250776, change widget visibility
+                                in the edit interval dialog
+                            </li></ul>
+                        
+                        </dd><dt><b>New in the 2.2.0 release</b> (April 2004)
+                        </dt><dd>This release sports a brand-new look-n-feel for the reports,
+                            together with improved URL support.
+                            The reports now use CSS style sheets, and can contain embedded 
+                            images.  A 'publish' function using GnomeVFS makes it easier 
+                            to copy reports to other systems, using ssh, ftp, http or any 
+                            other supported method.  In addition, the following bugs were 
+                            fixed:
+                            <ul>
+                            <li>Crashes when 'help' button clicked in certain dialogs.
+                            </li><li>Corruption of 'reports' menu, followed by crash.
+                            </li><li>Fix flyover help to actually work.
+                            </li><li>Add missing 'copy' to interval edit popup menu.
+                            </li></ul>
+                        
+                        </dd><dt><b>New in the 2.1.9 release</b> (April 2004)
+                        
+                        </dt><dd>This release fixes a number of bugs in earlier releases.
+                            <ul>
+                            <li> Keyboard events were not resetting the timeout
+                            </li><li> Fix Help system so that help actually starts up.
+                            </li><li> Fix old, multiple scheme bugs affecting billing reports.
+                            </li><li> Provides 'infinite undo' for cut projects.
+                            </li><li> Keyboard cut (ctrl-x) fixed so that it cuts only if project
+                                window has focus.
+                            </li><li> Can now specify day-of-week for the start of a new week.
+                                Also, end-of-day need not be midnight - its now configurable.
+                            </li><li> Remove obsolete menu entries (clear daily counters)
+                            </li><li> Fix flyover help on HTML reports
+                            </li><li> Fix order of yesterday/today columns.
+                            </li><li> Improve checks for Guile during builds
+                            </li><li> New whiz-bang SQL for reports.
+                            </li></ul>
+
+                        
+                        </dd><dt><b>New in the 2.1.8 release</b> (April 2004)
+                        </dt><dd>This release adds support for simple report queries.  In particular,
+                            reports can now be generated for all tasks that occurred between a
+                            pair of dates;  an extremely general query system is now in place,
+                            although it is not used except to perform this simple date query.
+                            <br><br>
+                            Toshio Kuratomi provided a major cleanup of the documentation 
+                            subsystem.  Goedson Teixeira Paixao provided a new pt_BR translation.
+                            A variety of minor bugs were fixed, including a crash of the 
+                            'yelp' help browser.
+                            <br><br>
+                        
+                        </dd><dt><b>New in the 2.1.7 release</b> (June 2003)
+                        </dt><dd>Version 2.1.7 fixes some internationalization bugs, and ports the 
+                            configuration system to GConf2. The 'custom reports' menu is now 
+                            editable.  
+                            <br><br>
+                        
+                        </dd><dt><b>New in the 2.1.6 release</b>
+                        </dt><dd>The "Daily Report" will show not only the total hours worked,
+                            day by day, but will also show a bulleted list of tasks worked 
+                            that day.  The main window display can now show total hours worked
+                            for previous day and previous week.  Sub-projects can now be fetched 
+                            via scheme, allowing them to be included in reports.  The scheme
+                            subsystem now includes an elementary type system, allowing more
+                            complex structures to be built.  A half-dozen different crashes 
+                            have been fixed.
+                            <br><br>
+                        
+                        </dd><dt><b>New in the 2.1.5 release</b> (January 2003)
+                        </dt><dd>The main window has been reformulated in a big way:  It
+                            now includes sub-panels for editing project and diary notes.
+                            This 'notes area' makes it far more convenient to make
+                            extensive notes and 'blog' your way through a set of projects.
+                            <br><br>
+                            Also fixes bugs with backup timestamps, also with cut-n-paste
+                            of project trees.
+                            <br><br>
+                        
+                        </dd><dt><b>New in the 2.1.4 release</b> (December 2002)
+                        
+                        </dt><dd>The scheme interface re-design has been finished.
+                            This means that the HTML reports are far, far more
+                            configurable, and can be made to look much prettier.
+                            The old, nasty table-formatting features have been removed.
+                            It also means that tab-delimited export now works cleanly,
+                            and other export formats can be easily added.
+                            <br><br>
+                            
+                        <dt><b>New in the 2.1.3 release</b>
+                        </dt><dd>The time credited to a project after the keyboard inactivity 
+                            timer has tripped is now very easily adjustable.  Thus, if
+                            the timer tripped because you were on the phone, you can now
+                            trivially credit the project with any time, from zero to 
+                            the full interval since the last keyboard/mouse activity,
+                            by simply adjusting a slider in the timeout popup.
+                            <br><br>
+                        
+                            Backup copies of data automatically saved, automatically
+                            pruned back, thus providing an archive of old data as well
+                            as avoiding catastrophic data loss.
+                            <br><br>
+                        
+                        </dd><dt><b>New in the 2.1.2 release</b>
+                        </dt><dd>A "major" change in the user interface: one must now
+                            double-click to start a project timer running.  This 
+                            makes navigation and task editing much easier and more
+                            robust than the single-click interface, which was prone
+                            to accidental-click problems, especially on laptop touchpads.
+                            This makes GnoTime much more usable on laptops.
+                            The 2.1.2 version is also the first official stable, 
+                            non-beta release GnoTime. (December 27, 2002)
+                            <br><br>
+                            The 2.1.2 version also included:
+                            <ul>
+                        
+                            <li>Added new to-do list report
+                            </li><li>Run shell commands when project started/stopped (fixed)
+                            </li><li>Added tab-delimited export of to-do list
+                            </li><li>Removed cause of possible crashes (buffer over-run
+                                for large datasets).
+                            </li><li>Remember what state tree was left in between sessions.
+                            </li><li>Much improved scheme support in reports
+                            </li><li>Language translations now included as part of dist
+                            </li><li>Can now save HTML reports to file (again)
+                            </li><li>Now detects inactivity due to laptop shutdown
+                            </li><li>Fix start/stop timer icon in toolbar
+                            </li></ul>
+                        
+                        </dd><dt><b>History:</b>
+                        </dt><dd>GnoTime used to be known as GTT and was a part of the <tt>gnome-utils</tt>
+                        
+                            package.  It has now been split out of that package, and ported to 
+                            Gnome2.  The Gnome2 port is now officially 'stable' and (more-or-less)
+                            ready for general, production use.  It does still have a variety 
+                            of blemishes, but these don't seem to be show-stoppers at this point.
+                            <br><br>
+                            Note that the gnome-1.4 version of GTT/GnoTime is still
+                            available as a part of the 
+                            <tt>gnome-utils</tt> package on <tt>cvs.gnome.org</tt>,
+                            in the <tt>gnome-utils-1-4</tt> branch.
+                            It is <b>NO LONGER A PART OF GNOME_UTILS-2.0</b>
+                            If you are interested in gtt version 1.4, and want the most 
+                            recent gnome-1.4 CVS source, you
+                            should check out the gnome-1.4 branch, as follows:
+                            <tt>
+                        
+                            cvs -z3 -d :pserver:anonymous@anoncvs.gnome.org:/cvs/gnome checkout -r
+                            gnome-utils-1-4 gnome-utils
+                            </tt>
+                            Please note that this gnome-1.4 branch fixes some critical gtt
+                            bugs!  Please note that these fixes are NOT in the latest 
+                            gnome-utils 1.4 tarball! 
+                        </dd></dl>
+                        </span>
+                        </p>
+                    </div>
+                </div>
+
+
+<!-- #include file="menu.html" -->
+
+<!-- #include file="footer.html" -->

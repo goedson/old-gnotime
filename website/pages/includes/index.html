@@ -1,0 +1,187 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"><head>
+
+
+    <meta http-equiv="content-type" content="text/html; charset=utf8">
+    <meta name="author" content="Dave Shea">
+    <meta name="keywords" content="design, css, cascading, style, sheets, xhtml, graphic design, w3c, web standards, visual, display">
+    <meta name="description" content="A demonstration of what can be accomplished visually through CSS-based design.">
+    <meta name="robots" content="all"><title>GnoTime - The Gnome Time Tracker: Keep your projects under "timing control"</title><!-- to correct the unsightly Flash of Unstyled Content. http://www.bluerobot.com/web/css/fouc.asp --><script type="text/javascript"></script><style type="text/css" media="all">
+        @import "zengarden-sample.css";
+    </style><!--
+
+
+    This xhtml document is marked up to provide the designer with the maximum possible flexibility.
+    There are more classes and extraneous tags than needed, and in a real world situation, it's more
+    likely that it would be much leaner.
+    
+    However, I think we can all agree that even given that, we're still better off than if this had been
+    built with tables.
+
+
+--></head><body onload="window.defaultStatus='GnoTime - The Gnome Time Tracker';" id="<!--gnotime-->">
+
+<div id="container">
+    <div id="intro">
+        <div id="pageHeader">
+            <h1><span>GnoTime</span></h1>
+            <h2><span>The Gnome Time Tracker</span></h2>
+        </div>
+        <div id="quickSummary">
+            <p class="p1"><span>GnoTime: Keep your projects under "timing control".</span></p>
+            <p class="p2"><span>TODO list/diary/journal tool</span></p>
+        </div>
+
+        <div id="preamble">
+            <h3><span>GnoTime - The Gnome Time Tracker (GTT)</span></h3>
+            <p class="p1"><span>GTT is a to-do list/diary/journal tool that can track the amount of time spent on projects, and, among other things, generate reports and invoices based on that time.</span></p>
+            <p class="p2"><span>It's being used to keep shopping lists, organize ideas, track bug reports, keep a diary of activities, do some blogging, provide weekly status reports to management, and even as a consultant billing system.</span></p>
+            <p class="p3"><span>The reason it can be used for all of these things is that it supports five basic, simple features:</span></p>
+            <p class="p4">
+                <span>
+                    <ul>
+                        <li>Multiple <b>To-Do Lists</b> that can be sorted by the 
+                            priority/importance of the tasks in the list.  The to-do
+                            items can be organized into categories, arranged in a
+                            hierarchical way.  This makes it easy to maintain 
+                            both business and personal items in the list, or
+                            handle many different projects, while keeping them
+                            separate from each other.
+                        </li><li>A pair of <b>Diary/Journal</b> areas that can be used 
+                            to keep long and detailed notes and diary entries.
+                            The project description area allows a multi-paragraph 
+                            description or status to be typed in.  The diary 
+                            area allows day-to-day notes to be associated with
+                            a set of timestamps, so that one has a record of what
+                            one did on any given day.
+                        </li><li>A <b>Running Timer</b>, with time totals, for each 
+                            project/task.  One starts the timer by clicking on a 
+                            task: it will measure the amount of time that you are
+                            in front of the computer.  If it detects that the 
+                            keyboard/mouse are idle, it will stop the clock.  
+                            If the clock stays stopped too long, it will nag you to 
+                            start it up again.  You can view time totals by day, 
+                            week, month or year.
+                        </li><li>A <b>Billing Status</b> dialog for each diary entry. 
+                            You can mark any given diary entry as bill-able/non-bill-able,
+                            paid or pending, and set the billing rate. Each
+                            project can also be marked up with a set of 
+                            project-planning information: planed start, end and 
+                            due dates, hours to finish, percent-complete.  
+                            This is in addition to assigning an urgency/importance
+                            to each project, as well as a status (completed/in-progress
+                            not-started/canceled).
+                        </li><li>A half-dozen different HTML <b>Reports</b> that can
+                            slice and dice your lists.  There's a Journal report
+                            that shows all of the diary entries for one given project. 
+                            There's an Invoice
+                            report that summarizes the time spent on each entry,
+                            and computes a dollar amount for it.  There's a Status
+                            Report that prints the title of each project, together
+                            with the paragraph-long descriptions of each.  There's
+                            a ToDo report, which prints only the project title, the 
+                            importance/urgency, and the completed/in-progress/not-started 
+                            status.  The Daily report summarizes the total time
+                            spent on a day-by-day basis, and lists each of the projects
+                            that were worked on in a given day. Each of these reports
+                            can be customized.  And, because they're HTML, you can
+                            even publish them as web pages.  (Yes, I've thought of
+                            using GnoTime as a weblog management/publishing tool).
+                        </li>
+                    </ul>
+                </span>
+            </p>
+        </div>
+    </div>
+
+
+    <div id="supportingText">
+        <div id="explanation">
+            <h3><span>More About Some of These Features</span></h3>
+            <p class="p1"><span>We'd like to tell you a bit more about some of the features. But first, we want to tell you that GnoTime is <a href="http://www.fsf.org/" title="Free Software Fundation">Free Software</a>, distributed under the  <a href="http://www.gnu.org/licenses/gpl-3.0.html" title="GPLv3"><acronym title="GNU General Public License">GPLv3</acronym></a> License, for the Linux, Mac OSX and other Unix desktops. No, it does *not* for MS Windows.  Sorry.</span></p>
+            
+                <h4><span>Simple <acronym title="Graphical User Interface">GUI</acronym>, Simple Navigation</span></h4>
+                <p class="p1"><span>We've strived to design the GUI as simple as possible, but we're not done yet according to our standards. GnoTime will auto-save data, so that you don't have to. Therefore, there is no data loss in case of a crash. The hierarchical tree of projects is managed through drag-n-drop, and can be navigated from the keyboard, with arrows keys and carriage returns. The left/right arrow keys expand/collapse project lists. Hitting return starts and stops the timer.</span></p>
+
+                <h4><span>Auto-Merge/Cleanup of Short Intervals Support</span></h4>
+                <p class="p1"><span>We also try to unclutter a mess of timer stops/starts by trying to clean up time-keeping cruft. Extremely short time intervals are automatically removed from the logs. The lebgth of such intervals is configurable. Slightly longer but still short intervals are auto-merged into nearby neighbors. Short gaps between intervals are coalesced as well.  You can specify a time period of 0 seconds to turn these features off.</span></p>
+
+                <h4><span>User-Customizable HTML-based Reports</span></h4>
+                <p class="p1"><span>The journal/report GUI is based on template HTML pages.  If you know HTML, then you can create customized report pages.  Particularly handy for slapping the company logo and mailing address on the top of the page, and generating a unique, custom look. User-defined reports (contained in <tt>ghtml</tt> files) can be added to the menus by typing in the filename into the 'New Report' GUI dialog.</span></p>
+                <p class="p1"><span> Admittedly, hacking on HTML templates is not the easiest thing in the world:  you can't (yet) customize reports with a WYSIWYG editor (although we are contemplating one). But we figure that HTML can't be that hard: the nerd in you will not be intimidated. It might be a bit scary to mention scheme at this point, but lets just say that you can be totally ignorant of scheme and still be able to do some pretty fancy customization, above and beyond what HTML lets you do, by hacking on the scheme in the report templates.</span></p>
+                <p class="p1"><span>Fresh in version 2.1.9 is the ability to embed simple SQL queries in the report templates.  We know that many of you power users know SQL, so we figure you'll like this.  The SQL gives you the ability to query for only those projects/tasks that meet a certain criteria, which is handy if you've got years worth of data and years worth of project lists and to-do items, and you want to just fish out the ones from last month.</span></p>
+                <p class="p1"><span>Disclaimer: we're still working on SQL support. It works, but you can't yet query everything.</span></p>
+
+                <h4><span>Shell Commands</span></h4>
+                <p class="p1"><span>A shell command can be executed whenever a project timer is started or stopped.  The project title, description and other parameters can be passed to the shell command.  We don't know what the hell you power users do with this feature; its been in GTT since the very earliest releases.</span></p>
+
+                <h4><span><acronym title="EXtensible Markup Language">XML</acronym> File Format</span></h4>
+                <p class="p1"><span>All project and journal data are stored in an XML file format. The XML file accurately reflects the internal state of the GnoTime data, and therefore generic XML tools should be able to perform interesting transformations on this data.</span></p>
+
+                <h4><span>Multi-Language Support</span></h4>
+                <p class="p1"><span>The GnoTime menus and messages have been translated to dozens of languages. There are message catalogs for the following locales:
+                    <tt>
+                    az bg ca cs da de el en_GB es et eu fi fr ga gl hu it ja ko lt lv ms nl
+                    nn no pl pt pt_BR ro ru sk sl sv ta tr uk vi wa zh_CN zh_TW
+                    </tt>.</span></p>
+                <p class="p1"><strong>Some of these translations need an update; they're quite old and out of date. We need help here.</strong> Translations are needed for the manual. Actually, the manual needs  a complete re-write; its three years old, and doesn't discuss most of the newer features.</span></p>
+        </div>
+    </div>
+
+    
+    <div id="linkList">
+        <!--extra div for flexibility - this list will probably be the trickiest spot you'll deal with -->
+        <div id="linkList2">
+
+        <!-- If you're wondering about the extra &nbsp; at the end of the link, it's a hack to meet WCAG 1 Accessibility. -->
+        <!-- I don't like having to do it, but this is a visual exercise. It's a compromise. -->
+            <div id="lselect1">
+                <h3 class="select"><span>New User Menu:</span></h3>
+                <!-- list of links begins here. There will be no more than 8 links per page -->
+                <ul>
+                    <li><a href="./index.html" title="AccessKey: h" accesskey="h">Home</li>
+                    <li><a href="./news.html" title="AccessKey: n" accesskey="n">News</li>
+                    <li><a href="http://sourceforge.net/docman/?group_id=55463" title="AccessKey: p" accesskey="p">Screenshots</li>
+                    <!--<li><a href="./features.html" title="AccessKey: r" accesskey="r">Features</a></li>-->
+                    <li><a href="http://sourceforge.net/docman/?group_id=55463" title="AccessKey: c" accesskey="c">Documentation</li>
+                    <li><a href="http://sourceforge.net/project/platformdownload.php?group_id=55463" title="AccessKey: d" accesskey="d">Download</li>
+                    <li><a href="./related_links.html" title="AccessKey: l" accesskey="l">Related links</li>
+                </ul>
+            </div>
+            <div id="lselect2">
+                <h3 class="select"><span>Current Users Menu:</span></h3>
+                <!-- list of links begins here. There will be no more than 8 links per page -->
+                <ul>
+                    <li><a href="http://sourceforge.net/tracker/?group_id=55463&atid=477103" title="AccessKey: b" accesskey="b">Bug Tracker</a></li>
+                    <li><a href="http://sourceforge.net/mail/?group_id=55463" title="AccessKey: a" accesskey="a">Mailing lists</li>
+                    <li><a href="http://sourceforge.net/forum/?group_id=55463" title="AccessKey: f" accesskey="f">Forums</li>
+                    <li><a href="http://sourceforge.net/tracker/?group_id=55463&atid=477104" title="AccessKey: s" accesskey="s">Support</a></li>
+                    <li><a href="./faq.html" title="AccessKey: q" accesskey="q">Faq</li>
+                </ul>
+            </div>
+            <div id="lselect3">
+                <h3 class="select"><span>Developers Menu:</span></h3>
+                <!-- list of links begins here. There will be no more than 8 links per page -->
+                <ul>
+                    <li><a href="./technology_choises.html" title="AccessKey: t" accesskey="t">Technology Choices/Overview</a></li>
+                    <li><a href="https://sourceforge.net/svn/?group_id=55463" title="AccessKey: w" accesskey="w">Code</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+<div id="footer">
+    <a href="http://validator.w3.org/check/referer" title="Check the validity of this site&#8217;s XHTML">xhtml</a> &nbsp; 
+    <a href="http://jigsaw.w3.org/css-validator/check/referer" title="Check the validity of this site&#8217;s CSS">css</a> &nbsp; 
+    <a href="http://creativecommons.org/licenses/by-nc-sa/1.0/" title="View details of the license of this site, courtesy of Creative Commons.">cc</a> &nbsp;
+    <a href="http://bobby.watchfire.com/bobby/bobbyServlet?URL=http%3A%2F%2Fwww.mezzoblue.com%2Fzengarden%2F&amp;output=Submit&amp;gl=sec508&amp;test=" title="Check the accessibility of this site according to U.S. Section 508">508</a> &nbsp;
+    <a href="http://bobby.watchfire.com/bobby/bobbyServlet?URL=http%3A%2F%2Fwww.mezzoblue.com%2Fzengarden%2F&amp;output=Submit&amp;gl=wcag1-aaa&amp;test=" title="Check the accessibility of this site according to WAI Content Accessibility Guidelines 1">aaa</a>
+</div>
+<!-- These extra divs/spans may be used as catch-alls to add extra imagery. -->
+<!-- Add a background image to each and use width and height to control sizing, place with absolute positioning -->
+<div id="extraDiv1"><span></span></div><div id="extraDiv2"><span></span></div><div id="extraDiv3"><span></span></div>
+<div id="extraDiv4"><span></span></div><div id="extraDiv5"><span></span></div><div id="extraDiv6"><span></span></div>
+
+</body></html>
