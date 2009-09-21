@@ -23,7 +23,7 @@
  *                Gnotime
  *                
  * Created at:    Thu Nov 22 18:23:49 2007
- * Modified at:   Sun Sep 20 22:40:02 2009
+ * Modified at:   Mon Sep 21 20:04:42 2009
  * Modified by:   Goedson Teixeira Paixao <goedson@debian.org>
  ********************************************************************/
 
@@ -680,7 +680,10 @@ gtt_projects_tree_set_visible_columns (GttProjectsTree *project_tree,
 	GList *p;
 	GttProjectsTreePrivate *priv = GTT_PROJECTS_TREE_GET_PRIVATE (project_tree);
 
-	g_tree_destroy (priv->column_references);
+	if (priv->column_references)
+	{
+		g_tree_destroy (priv->column_references);
+	}
 	priv->column_references = g_tree_new ((GCompareFunc) strcmp);
 
 
@@ -1145,6 +1148,7 @@ set_expander_state (GtkTreeModel *model, GtkTreePath *path, GtkTreeIter *iter, g
 void
 gtt_projects_tree_set_expander_state (GttProjectsTree *gpt, gchar *states)
 {
+	g_return_if_fail(states != NULL);
 	GtkTreeModel *model = gtk_tree_view_get_model (GTK_TREE_VIEW (gpt));
 	ExpanderStateHelper esh;
 	int row = 0;

@@ -1098,7 +1098,7 @@ task_get_blocktime_str_scm (GttGhtml *ghtml, GttTask *tsk)
 
 	value = (time_t) (lround( ((double) task_secs) / bill_unit ) * bill_unit);
 
-	qof_print_hours_elapsed_buff (buff, 100, value, TRUE);
+	xxxqof_print_hours_elapsed_buff (buff, 100, value, TRUE);
 	return scm_mem2string (buff, strlen (buff));
 }
 
@@ -1715,9 +1715,8 @@ gtt_ghtml_new (void)
 		is_inited = 1;
 		register_procs();
 
-		/* I think I neeed to do this, not sure */
-		scm_init_debug();
-		scm_init_backtrace();
+		/* Initialize guile interpreter */
+		scm_init_guile();
 
 		/* Load predefined scheme forms */
 		scm_c_primitive_load (gtt_ghtml_resolve_path("gtt.scm", NULL));
