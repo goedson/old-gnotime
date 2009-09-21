@@ -636,4 +636,8 @@ GttTask *       gtt_interval_get_parent (GttInterval *);
 gboolean        gtt_interval_is_first_interval (GttInterval *);
 gboolean        gtt_interval_is_last_interval (GttInterval *);
 
+/* GDataCompareFunc for use in GTrees of GttProjects */
+gint gtt_project_cmp (gconstpointer a, gconstpointer b, gpointer user_data);
+
+
 #endif /* __GTT_PROJ_H__ */

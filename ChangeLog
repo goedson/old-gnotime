@@ -1,3 +1,9 @@
+2009-09-21  Goedson Teixeira Paixao  <goedson@debian.org>
+
+	* src/proj.h, src/proj.c (gtt_project_cmp), src/projects-tree.c:
+	moved the project_cmp function from the projects-tree.c to
+	the proj.c module.
+
 2008-11-28  Goedson Teixeira Paixao  <goedson@debian.org>
 
 	* src/idle-dialog.c (show_idle_dialog): mark the idle dialog as

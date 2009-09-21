@@ -3075,4 +3075,14 @@ project_list_sort_status(GttProjectList *gps)
 	DO_SORT(cmp_status);
 }
 
+/* GDataCompareFunc for use in GTrees of GttProjects */
+gint
+gtt_project_cmp (gconstpointer a, gconstpointer b, gpointer user_data)
+{
+	GttProject *prj_a = (GttProject *) a;
+	GttProject *prj_b = (GttProject *) b;
+	return gtt_project_get_id (prj_a) - gtt_project_get_id (prj_b);
+}
+
+
 /* =========================== END OF FILE ========================= */

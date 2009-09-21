@@ -1,6 +1,6 @@
 /*********************************************************************
  *                
- * Copyright (C) 2007,  Goedson Teixeira Paixao
+ * Copyright (C) 2007, 2009,  Goedson Teixeira Paixao
  *                
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -23,7 +23,7 @@
  *                Gnotime
  *                
  * Created at:    Thu Nov 22 18:23:49 2007
- * Modified at:   Sat Dec  1 17:56:41 2007
+ * Modified at:   Sun Sep 20 22:40:02 2009
  * Modified by:   Goedson Teixeira Paixao <goedson@debian.org>
  ********************************************************************/
 
@@ -160,16 +160,6 @@ gtt_projects_tree_create_model (GttProjectsTree *gpt)
 
 G_DEFINE_TYPE(GttProjectsTree, gtt_projects_tree, GTK_TYPE_TREE_VIEW)
 
-
-/* GDataCompareFunc for use in the row_references GTree */
-static gint
-project_cmp (gconstpointer a, gconstpointer b, gpointer user_data)
-{
-	GttProject *prj_a = (GttProject *) a;
-	GttProject *prj_b = (GttProject *) b;
-	return gtt_project_get_id (prj_a) - gtt_project_get_id (prj_b);
-}
-
 static void
 gtt_projects_tree_init (GttProjectsTree* gpt)
 {
@@ -183,7 +173,7 @@ gtt_projects_tree_init (GttProjectsTree* gpt)
 	priv->highlight_active = TRUE;
 
 	/* references to the rows */
-	priv->row_references = g_tree_new_full (project_cmp, NULL, NULL, (GDestroyNotify) gtk_tree_row_reference_free);
+	priv->row_references = g_tree_new_full (gtt_project_cmp, NULL, NULL, (GDestroyNotify) gtk_tree_row_reference_free);
 
 	/* cell renderers used to render the tree */
 	priv->text_renderer = gtk_cell_renderer_text_new ();
