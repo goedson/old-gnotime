@@ -287,6 +287,8 @@ log_endofday (void)
 	if ( ! CAN_LOG)
 		return;
 	/* force a flush of the logfile */
-	if (cur_proj != NULL)
-		log_proj_intern (cur_proj, TRUE /*log_if_equal*/);
+
+// TODO fix this to correctly log the current project 
+//	if (gtt_running_projects_nprojects (running_projects) > 0)
+//		log_proj_intern (cur_proj, TRUE /*log_if_equal*/);
 }

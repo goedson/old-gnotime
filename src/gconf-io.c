@@ -89,7 +89,7 @@ gtt_save_reports_menu (void)
 /* XXX fixme -- this should really use GConfChangeSet */
 
 void
-gtt_gconf_save (void)
+gtt_gconf_save (GttRunningProjects *rp)
 {
 	char s[120];
 	int i;
@@ -219,7 +219,13 @@ gtt_gconf_save (void)
 	SETINT ("/Misc/NoProjectTimeout", config_no_project_timeout);
 	SETINT ("/Misc/AutosavePeriod", config_autosave_period);
 	SETINT ("/Misc/TimerRunning", timer_is_running());
-	SETINT ("/Misc/CurrProject", gtt_project_get_id (cur_proj));
+	//SETINT ("/Misc/CurrProject", gtt_project_get_id (cur_proj));
+
+	GSList *list = NULL;
+	list = gtt_running_projects_get_project_id_list (rp);
+	SETLIST ("Misc/CurrProjectList", GCONF_VALUE_INT, list);
+	g_slist_free (list);
+
 	SETINT ("/Misc/NumProjects", -1);
 
 	SETINT ("/Misc/DayStartOffset", config_daystart_offset);
@@ -344,12 +350,15 @@ gtt_gconf_load (void)
 	/* If already running, and we are over-loading a new file,
 	 * then save the currently running project, and try to set it
 	 * running again ... */
-	if (gtt_project_get_title(cur_proj) && (!first_proj_title)) 
-	{
+
+// TODO replace this code by appropriate use of running projects
+
+//	if (gtt_project_get_title(cur_proj) && (!first_proj_title)) 
+//	{
 		/* We need to strdup because title is freed when 
 		 * the project list is destroyed ... */
-		first_proj_title = g_strdup (gtt_project_get_title (cur_proj));
-	}
+//		first_proj_title = g_strdup (gtt_project_get_title (cur_proj));
+//	}
 
 	_n = config_show_tb_new;
 	_c = config_show_tb_ccp;

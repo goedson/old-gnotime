@@ -1,3 +1,15 @@
+2009-10-28  Goedson Teixeira Paixao  <goedson@debian.org>
+
+	* src/active-dialog.c, src/active-dialog.h, src/app.c, src/app.h,
+	src/cur-proj.h, src/file-io.c, src/file-io.h, src/gconf-io.c,
+	src/gconf-io.h, src/idle-dialog.c, src/idle-dialog.h, src/log.c,
+	src/main.c, src/menucmd.c/ src/timer.c, src/timer.h: Initial
+	changes to use the running-projects module instead of the global
+	"cur_proj" variable.
+
+	* src/running-projects.c, src/running-projects.h: Implemented
+	module to keep track of the set of running projects.
+
 2009-09-21  Goedson Teixeira Paixao  <goedson@debian.org>
 
 	* src/proj.h, src/proj.c (gtt_project_cmp), src/projects-tree.c:

@@ -30,7 +30,7 @@
 #include "proj-query.h"
 #include "util.h"
 #include "dialog.h"
-
+#include "running-projects.h"
 
 int config_no_project_timeout;
 
@@ -45,6 +45,8 @@ struct GttActiveDialog_s
 	GtkLabel    *credit_label;
 	GtkOptionMenu  *project_menu;
 	guint        timeout_event_source;
+	GttRunningProjects *running_projects;
+
 };
 
 
@@ -94,7 +96,7 @@ dialog_close (GObject *obj, GttActiveDialog *dlg)
 	dlg->dlg = NULL;
 	dlg->gtxml = NULL;
 
-	if (!cur_proj)
+	if (gtt_running_projects_nprojects (dlg->running_projects) == 0)
 	{
 		schedule_active_timeout (config_no_project_timeout, dlg);
 	}
@@ -109,7 +111,7 @@ dialog_kill (GObject *obj, GttActiveDialog *dlg)
 	gtk_widget_destroy (GTK_WIDGET(dlg->dlg));
 	dlg->dlg = NULL;
 	dlg->gtxml = NULL;
-	if (!cur_proj)
+	if (gtt_running_projects_nprojects (dlg->running_projects) == 0)
 	{
 		schedule_active_timeout (config_no_project_timeout, dlg);
 	}
@@ -129,7 +131,7 @@ start_proj (GObject *obj, GttActiveDialog *dlg)
 	w = gtk_menu_get_active (menu);
 	prj = g_object_get_data (G_OBJECT (w), "prj");
 
-	cur_proj_set (prj);
+	gtt_running_projects_run_project (dlg->running_projects, prj);
 	dialog_kill (obj, dlg);
 }
 
@@ -215,12 +217,13 @@ active_dialog_realize (GttActiveDialog * id)
 /* =========================================================== */
 
 GttActiveDialog *
-active_dialog_new (void)
+active_dialog_new (GttRunningProjects *rp)
 {
 	GttActiveDialog *ad;
 
 	ad = g_new0 (GttActiveDialog, 1);
 	ad->gtxml = NULL;
+	ad->running_projects = rp;
 
 	return ad;
 }
@@ -232,7 +235,7 @@ show_active_dialog (GttActiveDialog *ad)
 {
 	g_return_if_fail(ad);
 
-	g_return_if_fail(!cur_proj);
+	g_return_if_fail(gtt_running_projects_nprojects (ad->running_projects) == 0);
 
 	/* Due to GtkDialog broken-ness, re-realize the GUI */
 	if (NULL == ad->gtxml)

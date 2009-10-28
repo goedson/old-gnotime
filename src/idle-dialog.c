@@ -30,12 +30,13 @@
 
 #include <qof.h>
 
-#include "cur-proj.h"
 #include "idle-dialog.h"
 #include "dialog.h"
 #include "proj.h"
 #include "util.h"
 #include "app.h"
+#include "running-projects.h"
+
 
 int config_idle_timeout = -1;
 
@@ -61,6 +62,7 @@ struct GttIdleDialog_s
 	GttProject  *prj;
 	time_t      last_activity;
 	time_t      previous_credit;
+	GttRunningProjects *running_projects;
 };
 
 static gboolean idle_timeout_func (gpointer data);
@@ -93,7 +95,7 @@ idle_timeout_func (gpointer data)
 	if (xss_query_ok)
 	{
 		int idle_seconds = idle_dialog->xss_info->idle / 1000;
-		if (cur_proj != NULL &&
+		if (gtt_running_projects_nprojects (idle_dialog->running_projects) > 0 &&
 			config_idle_timeout > 0 &&
 			idle_seconds >= config_idle_timeout)
 		{
@@ -106,7 +108,7 @@ idle_timeout_func (gpointer data)
 		}
 		else
 		{
-			if (cur_proj != NULL)
+			if (gtt_running_projects_nprojects (idle_dialog->running_projects) > 0)
 			{
 				schedule_idle_timeout (config_idle_timeout - idle_seconds, idle_dialog);
 			}
@@ -156,7 +158,7 @@ static void
 restart_proj (GObject *obj, GttIdleDialog *dlg)
 {
 	dlg->last_activity = time(0);  /* bug fix, sometimes events are lost */
-	cur_proj_set (dlg->prj);
+	gtt_running_projects_run_project (dlg->running_projects, dlg->prj);
 	dialog_kill (obj, dlg);
 }
 
@@ -378,7 +380,7 @@ idle_dialog_realize (GttIdleDialog * id)
 /* =========================================================== */
 
 GttIdleDialog *
-idle_dialog_new (void)
+idle_dialog_new (GttRunningProjects *rp)
 {
 	GttIdleDialog *id;
 
@@ -386,7 +388,7 @@ idle_dialog_new (void)
 	id->prj = NULL;
 
 	id->gtxml = NULL;
-
+	id->running_projects = rp;
 	gchar *display_name = gdk_get_display ();
 	id->display = XOpenDisplay (display_name);
 	if (id->display == NULL)
@@ -423,7 +425,7 @@ show_idle_dialog (GttIdleDialog *id)
 {
 	time_t now;
 	time_t idle_time;
-	GttProject *prj = cur_proj;
+	GttProject *prj = NULL;
 
 	if (!id) return;
 	if (0 > config_idle_timeout) return;
@@ -444,7 +446,7 @@ show_idle_dialog (GttIdleDialog *id)
 	id->visible = TRUE;
 
 	/* Stop the timer on the current project */
-	cur_proj_set (NULL);
+	gtt_running_projects_stop_all (id->running_projects);
 
 	id->prj = prj;
 

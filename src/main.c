@@ -39,7 +39,6 @@
 #include <qof.h>
 
 #include "app.h"
-#include "cur-proj.h"
 #include "err-throw.h"
 #include "file-io.h"
 #include "gtt.h"
@@ -51,7 +50,7 @@
 #include "timer.h"
 #include "toolbar.h"
 #include "xml-gtt.h"
-
+#include "running-projects.h"
 #if WITH_DBUS
 #include "dbus.h"
 #endif
@@ -61,7 +60,7 @@ char *first_proj_title = NULL;  /* command line over-ride */
 static gboolean first_time_ever = FALSE;  /* has gtt ever run before? */
 
 GttProjectList *master_list = NULL;
-
+GttRunningProjects *running_projects = NULL;
 const char *
 gtt_gettext(const char *s)
 {
@@ -147,7 +146,8 @@ void
 unlock_gtt(void)
 {
 	log_exit();
-	run_shell_command (cur_proj, FALSE);
+	gtt_running_projects_stop_all (running_projects);
+	//run_shell_command (cur_proj, FALSE);
 	unlink(build_lock_fname());
 
 	/* cleanup the guts. */
@@ -218,7 +218,7 @@ post_read_data(void)
 	gtt_post_ctree_config();
 	menu_set_states();
 	toolbar_set_states();
-	init_timer();
+	init_timer(running_projects);
 
 	/* Plugins need to be added to the main menus dynamically,
 	 * after the config file has been read */
@@ -557,7 +557,7 @@ save_all (void)
 
 	/* Try ... */
 	gtt_err_set_code (GTT_NO_ERR);
-	gtt_save_config ();
+	gtt_save_config (running_projects);
 
 	/* Catch */
 	errcode = gtt_err_get_code();
@@ -578,7 +578,7 @@ save_properties (void)
 
 	/* Try ... */
 	gtt_err_set_code (GTT_NO_ERR);
-	gtt_save_config ();
+	gtt_save_config (running_projects);
 
 	/* Catch */
 	errcode = gtt_err_get_code();
@@ -669,6 +669,9 @@ save_state(GnomeClient *client, gint phase, GnomeRestartStyle save_style,
 	argv[0] = (char *)data;
 	argv[1] = "--geometry";
 	argv[2] = g_strdup_printf("%dx%d+%d+%d", w, h, x, y);
+
+	/* TODO build command string
+
 	if ((cur_proj) && (gtt_project_get_title(cur_proj))) {
 		argc = 5;
 		argv[3] = "--select-project";
@@ -679,6 +682,8 @@ save_state(GnomeClient *client, gint phase, GnomeRestartStyle save_style,
 	gnome_client_set_clone_command(client, argc, argv);
 	gnome_client_set_restart_command(client, argc, argv);
 	g_free(argv[2]);
+
+	*/
 
 	/* save both the user preferences/config and the project lists */
 	errmsg = save_all();
@@ -779,8 +784,10 @@ main(int argc, char *argv[])
 
 	signal (SIGINT, got_signal);
 	signal (SIGTERM, got_signal);
+
+	running_projects = gtt_running_projects_new ();
 	lock_gtt();
-	app_new(argc, argv, geometry_string);
+	app_new(argc, argv, geometry_string, running_projects);
 
 	g_signal_connect(G_OBJECT(app_window), "delete_event",
 			   G_CALLBACK(app_quit), NULL);

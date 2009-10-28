@@ -20,10 +20,13 @@
 #define __CUR_PROJ_H__
 
 #include <proj.h>
+#include "running-projects.h"
 
-extern GttProject *cur_proj;
-void cur_proj_set(GttProject *p);
+
+// These are obsolete. Should use the running-projects module instead.
+// extern GttProject *cur_proj;
+// void cur_proj_set(GttProject *p);
 
 extern GttProjectList *master_list;
-
+extern GttRunningProjects *running_projects;
 #endif /* __CUR_PROJ_H__ */

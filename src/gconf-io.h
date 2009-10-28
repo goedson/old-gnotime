@@ -21,12 +21,13 @@
 #define GTT_GCONF_IO_H_
 
 #include <glib.h>
+#include "running-projects.h"
 
 /** 
  * The gtt_gconf_save() routine will save all of the GTT attributes
  * into the Gnome2 Gconf attribute system.
  */
-void gtt_gconf_save (void);
+void gtt_gconf_save (GttRunningProjects *rp);
 
 /** 
  * The gtt_gconf_load() routine will fetch all of the GTT attributes

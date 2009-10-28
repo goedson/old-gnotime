@@ -19,6 +19,8 @@
 #ifndef GTT_ACTIVITY_DIALOG_H_
 #define GTT_ACTIVITY_DIALOG_H_
 
+#include "running-projects.h"
+
 /* The Activity Dialog is poped up when no project is 
  * running, but keyboard/mouse activity has been detected
  * (after a long period of idleness).  It nags the user
@@ -37,7 +39,7 @@
 
 typedef struct GttActiveDialog_s GttActiveDialog;
 
-GttActiveDialog * active_dialog_new (void);
+GttActiveDialog * active_dialog_new (GttRunningProjects *rp);
 
 /** This routine will display the active dialog, but only
  *  if the keyboard/mouse has been idle for some amount of time.

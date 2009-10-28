@@ -19,6 +19,8 @@
 #ifndef GTT_IDLE_DIALOG_H_
 #define GTT_IDLE_DIALOG_H_
 
+#include "running-projects.h"
+
 /* The Idle Dialog is popped up when a project is active (a project 
  * timer is running), but the keyboard/mouse have been idle for some
  * set amount of time.  
@@ -38,7 +40,7 @@
 
 typedef struct GttIdleDialog_s GttIdleDialog;
 
-GttIdleDialog * idle_dialog_new (void);
+GttIdleDialog * idle_dialog_new (GttRunningProjects *rp);
 
 /** This routine will display the idle dialog, but only
  *  if the keyboard/mouse has been idle for some amount of time.

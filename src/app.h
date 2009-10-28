@@ -24,7 +24,7 @@
 #include "notes-area.h"
 #include "proj.h"
 #include "status-icon.h"
-
+#include "running-projects.h"
 
 extern NotesArea *global_na;        /* global ptr to notes GUI area */
 extern GttProjectsTree *projects_tree;
@@ -38,7 +38,7 @@ extern gboolean geom_place_override;
 
 void update_status_bar(void);
 
-void app_new(int argc, char *argv[], const char *geometry_string);
+void app_new(int argc, char *argv[], const char *geometry_string, GttRunningProjects *rp);
 
 void app_show(void);
 void app_quit(GtkWidget *w, gpointer data);

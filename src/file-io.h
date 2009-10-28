@@ -20,6 +20,7 @@
 #define __GTT_FILEIO_H__
 
 #include <glib.h>
+#include "running-projects.h"
 
 /* file-io.c and file-io.h is mostly involved in saving and restoring
  * user preference data to the default user config file (in .gnome2/gnotime)
@@ -38,7 +39,7 @@
  *    it can't find the newer ones first.
  *    If an error occurs, a GttErrCode is set.
  */
-void gtt_save_config (void);
+void gtt_save_config (GttRunningProjects *rp);
 void gtt_load_config (void);
 
 /* The gtt_post_data_config() routine should be called *after* the 

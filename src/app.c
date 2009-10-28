@@ -31,7 +31,6 @@
 
 #include "active-dialog.h"
 #include "app.h"
-#include "cur-proj.h"
 #include "gtt.h"
 #include "log.h"
 #include "menucmd.h"
@@ -44,12 +43,14 @@
 #include "util.h"
 #include "projects-tree.h"
 #include "proj.h"
+#include "running-projects.h"
 
 /* XXX Most of the globals below should be placed into a single
  * application-wide top-level structure, rather than being allowed
  * to be globals. But, for now, its OK ...
  */
-GttProject *cur_proj = NULL;
+
+static GttRunningProjects *running_projects = NULL;
 
 GttProjectsTree *projects_tree = NULL;
 NotesArea *global_na = NULL;
@@ -75,13 +76,13 @@ projects_tree_row_activated (GtkTreeView *tree_view, GtkTreePath *path, GtkTreeV
 {
 	GttProjectsTree *gpt = GTT_PROJECTS_TREE (tree_view);
 	GttProject *prj = gtt_projects_tree_get_selected_project (gpt);
-	if (cur_proj == prj)
+	if (gtt_running_projects_contains(running_projects, prj))
 	{
-		cur_proj_set (NULL);
+		gtt_running_projects_stop_project(running_projects, prj);
 	}
 	else
 	{
-		cur_proj_set (prj);
+		gtt_running_projects_run_project(running_projects, prj);
 	}
 }
 
@@ -247,11 +248,13 @@ update_status_bar(void)
 	}
 
 	/* Display the project title */
-	if (cur_proj)
+	if (gtt_running_projects_nprojects (running_projects) > 0)
 	{
-		s = g_strdup_printf ("%s - %s",
-	                       gtt_project_get_title(cur_proj),
-	                       gtt_project_get_desc(cur_proj));
+// XXX TODO Display the title of the project. What to do if there are more than one project running?
+//		s = g_strdup_printf ("%s - %s",
+//	                       gtt_project_get_title(cur_proj),
+//	                       gtt_project_get_desc(cur_proj));
+		s = g_strdup (_("Timer running"));
 	}
 	else
 	{
@@ -342,9 +345,14 @@ run_shell_command (GttProject *proj, gboolean do_start)
 void
 cur_proj_set (GttProject *proj)
 {
-	/* Due to the way the widget callbacks work,
-	 * we may be called recursively ... */
-	if (cur_proj == proj) return;
+	gtt_running_projects_stop_all (running_projects);
+	if (proj != NULL)
+	{
+		gtt_running_projects_run_project (running_projects, proj);
+	}
+
+/* XXX TODO We must assure all of these actions will be done through signal handlers associated with the
+   running projects signals 
 
 	log_proj(NULL);
 	gtt_project_timer_stop (cur_proj);
@@ -386,7 +394,7 @@ cur_proj_set (GttProject *proj)
 		gtt_projects_tree_update_project_data (projects_tree, cur_proj);
 	}
 
-	/* update GUI elements */
+	// update GUI elements 
 	menu_set_states();
 	toolbar_set_states();
 	if (proj)
@@ -395,6 +403,7 @@ cur_proj_set (GttProject *proj)
 		notes_area_set_project (global_na, proj);
 	}
 	update_status_bar();
+*/
 }
 
 
@@ -413,7 +422,7 @@ focus_row_set (GttProject *proj)
 /* ============================================================= */
 
 void
-app_new(int argc, char *argv[], const char *geometry_string)
+app_new(int argc, char *argv[], const char *geometry_string, GttRunningProjects *rp)
 {
 	GtkWidget *vbox;
 	GtkWidget *widget;
@@ -423,6 +432,8 @@ app_new(int argc, char *argv[], const char *geometry_string)
 	GtkHBox *labels;
 	GtkVBox *status_vbox;
 	GtkStatusbar *grip;
+
+	running_projects = rp;
 
 	app_window = gnome_app_new(GTT_APP_NAME, GTT_APP_TITLE " " VERSION);
 	gtk_window_set_wmclass(GTK_WINDOW(app_window),

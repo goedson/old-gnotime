@@ -23,7 +23,7 @@
 
 #include "active-dialog.h"
 #include "app.h"
-#include "cur-proj.h"
+#include "running-projects.h"
 #include "gtt.h"
 #include "idle-dialog.h"
 #include "log.h"
@@ -42,6 +42,8 @@ static gint file_save_timer = 0;
 static gint config_save_timer = 0;
 static GttIdleDialog *idle_dialog = NULL;
 static GttActiveDialog *active_dialog = NULL;
+
+static GttRunningProjects *running_projects = NULL;
 
 /* =========================================================== */
 /* zero out day counts if rolled past midnight */
@@ -98,6 +100,29 @@ config_save_timer_func (gpointer data)
 	return 1;
 }
 
+static gboolean
+update_tree (gpointer key, gpointer value, gpointer data)
+{
+
+	GttProject *prj = (GttProject *) key;
+	GttProjectsTree *tree = GTT_PROJECTS_TREE (data);
+
+	gtt_projects_tree_update_project_data (tree, prj);
+	return FALSE;
+}
+
+static gboolean
+update_project_timer (gpointer key, gpointer value, gpointer data)
+{
+
+	GttProject *prj = (GttProject *) key;
+
+	gtt_project_timer_update (prj);
+	return FALSE;
+}
+
+
+
 static gint
 main_timer_func(gpointer data)
 {
@@ -105,15 +130,17 @@ main_timer_func(gpointer data)
 	gtt_notes_timer_callback (global_na);
 	gtt_diary_timer_callback (NULL);
 
-	if (!cur_proj)
+	if (gtt_running_projects_nprojects (running_projects) == 0)
 	{
 		main_timer = 0;
 		return 0;
 	}
 
 	/* Update the data in the data engine. */
-	gtt_project_timer_update (cur_proj);
-	gtt_projects_tree_update_project_data (projects_tree, cur_proj);
+	gtt_running_projects_foreach (running_projects, update_project_timer, NULL);
+
+	gtt_running_projects_foreach (running_projects, update_tree, projects_tree);
+
 	update_status_bar ();
 	return 1;
 }
@@ -161,26 +188,29 @@ start_config_save_timer (void)
 void
 stop_main_timer (void)
 {
-	if (cur_proj)
-	{
-		/* Update the data in the data engine. */
-		gtt_project_timer_update (cur_proj);
-	}
+	
+	gtt_running_projects_stop_all (running_projects);
+
 	g_return_if_fail (main_timer);
 	g_source_remove (main_timer);
 	main_timer = 0;
 }
 
 void
-init_timer(void)
+init_timer(GttRunningProjects *rp)
 {
 	g_return_if_fail (!timer_inited);
 	timer_inited = TRUE;
 
-	idle_dialog = idle_dialog_new();
-	active_dialog = active_dialog_new();
+	running_projects = rp;
 
-	start_main_timer ();
+	idle_dialog = idle_dialog_new(rp);
+	active_dialog = active_dialog_new(rp);
+
+	if (gtt_running_projects_nprojects (running_projects) >= 0)
+    {
+		start_main_timer ();
+	}
 	start_file_save_timer ();
 	start_config_save_timer ();
 }
@@ -188,17 +218,12 @@ init_timer(void)
 gboolean
 timer_is_running (void)
 {
-	return (NULL != cur_proj);
+	return main_timer != 0;
 }
 
 void
 start_idle_timer (void)
 {
-	if (!timer_inited)
-	{
-		init_timer();
-	}
-
 	if (timer_is_running ())
 	{
 		idle_dialog_activate_timer (idle_dialog);
@@ -209,10 +234,6 @@ start_idle_timer (void)
 void
 start_no_project_timer (void)
 {
-	if (!timer_inited)
-	{
-		init_timer();
-	}
 	if (!idle_dialog_is_visible (idle_dialog) && !timer_is_running ())
 	{
 		idle_dialog_deactivate_timer (idle_dialog);
@@ -231,7 +252,7 @@ schedule_zero_daily_counters_timer (void)
 gboolean
 timer_project_is_running (GttProject *prj)
 {
-	return (prj == cur_proj);
+	return timer_is_running () && gtt_running_projects_contains (running_projects, prj);
 }
 
 /* ========================== END OF FILE ============================ */

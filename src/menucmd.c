@@ -259,7 +259,8 @@ cut_project(GtkWidget *w, gpointer data)
 	/* Clear out relevent GUI elements. */
 	prop_dialog_set_project(NULL);
 
-	if (cut_prj == cur_proj) gen_stop_timer ();
+	if (gtt_running_projects_contains (running_projects, cut_prj))
+		gtt_running_projects_stop_project (running_projects, cut_prj);
 	gtt_project_remove(cut_prj);
 	gtt_projects_tree_remove_project (projects_tree, cut_prj);
 

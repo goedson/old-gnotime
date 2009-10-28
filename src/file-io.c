@@ -290,12 +290,14 @@ gtt_load_gnome_config (const char *prefix)
 	/* If already running, and we are over-loading a new file,
 	 * then save the currently running project, and try to set it
 	 * running again ... */
-	if (gtt_project_get_title(cur_proj) && (!first_proj_title))
-	{
+// TODO replace the code below by correct usage of the running projects module
+
+//	if (gtt_project_get_title(cur_proj) && (!first_proj_title))
+//	{
 		/* we need to strdup because title is freed when
 		 * the project list is destroyed ... */
-		first_proj_title = g_strdup (gtt_project_get_title (cur_proj));
-	}
+//		first_proj_title = g_strdup (gtt_project_get_title (cur_proj));
+//	}
 
 	_n = config_show_tb_new;
 	_c = config_show_tb_ccp;
@@ -637,9 +639,9 @@ gtt_post_ctree_config (void)
 /* Save only the GUI configuration info, not the actual data */
 
 void
-gtt_save_config(void)
+gtt_save_config(GttRunningProjects *rp)
 {
-   gtt_gconf_save();
+   gtt_gconf_save(rp);
 }
 
 /* ======================================================= */
