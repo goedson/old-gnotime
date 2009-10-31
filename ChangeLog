@@ -1,3 +1,13 @@
+2009-10-31  Goedson Teixeira Paixao  <goedson@debian.org>
+
+	* src/timer.c (init_timer): connect the signal handlers for the
+	project_started and project_stoped signals of the
+	GttRunningProjects object.
+	(timer_project_stoped_handler, timer_project_started_handler):
+	handlers for the GttRunningProjects signals. Start or stop themain
+	timer according to the recieved signals and current number of
+	running projects.
+
 2009-10-28  Goedson Teixeira Paixao  <goedson@debian.org>
 
 	* src/active-dialog.c, src/active-dialog.h, src/app.c, src/app.h,

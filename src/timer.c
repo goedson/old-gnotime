@@ -197,6 +197,26 @@ stop_main_timer (void)
 }
 
 void
+timer_project_started_handler (GttRunningProjects *rp, GttProject *prj)
+{
+	if (!main_timer)
+	{
+		start_main_timer ();
+	}
+}
+
+void
+timer_project_stoped_handler (GttRunningProjects *rp, GttProject *prj)
+{
+	if (gtt_running_projects_nprojects (rp) == 0)
+	{
+		stop_main_timer ();
+		start_no_project_timer ();
+	}
+}
+
+
+void
 init_timer(GttRunningProjects *rp)
 {
 	g_return_if_fail (!timer_inited);
@@ -213,6 +233,9 @@ init_timer(GttRunningProjects *rp)
 	}
 	start_file_save_timer ();
 	start_config_save_timer ();
+
+	g_signal_connect (G_OBJECT(running_projects), "project_started", G_CALLBACK(timer_project_started_handler), NULL);
+	g_signal_connect (G_OBJECT(running_projects), "project_stoped", G_CALLBACK(timer_project_stoped_handler), NULL);
 }
 
 gboolean
