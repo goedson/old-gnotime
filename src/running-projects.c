@@ -65,7 +65,7 @@ gtt_running_projects_class_init (GttRunningProjectsClass *klass)
 					  g_cclosure_marshal_VOID__VOID,
 					  G_TYPE_NONE,
 					  1,
-					  GTT_TYPE_RUNNING_PROJECTS);
+					  G_TYPE_POINTER);
 
 	running_projects_signals[PROJECT_STOPED] =
 		g_signal_new ("project_stoped",
@@ -77,7 +77,7 @@ gtt_running_projects_class_init (GttRunningProjectsClass *klass)
 					  g_cclosure_marshal_VOID__VOID,
 					  G_TYPE_NONE,
 					  1,
-					  GTT_TYPE_RUNNING_PROJECTS);
+					  G_TYPE_POINTER);
 }
 
 static void
@@ -109,7 +109,7 @@ gtt_running_projects_run_project(GttRunningProjects *rp, GttProject *prj)
 	g_tree_insert (priv->projects, prj, prj);
 	gtt_project_timer_start (prj);
 
-	g_signal_emit (rp, running_projects_signals[PROJECT_STARTED], 0, prj);
+	g_signal_emit (rp, running_projects_signals[PROJECT_STARTED], 0, (gpointer) prj);
 }
 
 void
@@ -124,7 +124,7 @@ gtt_running_projects_stop_project (GttRunningProjects *rp, GttProject *prj)
 	g_tree_remove (priv->projects, prj);
 	gtt_project_timer_stop (prj);
 
-	g_signal_emit (rp, running_projects_signals[PROJECT_STOPED], 0, prj);
+	g_signal_emit (rp, running_projects_signals[PROJECT_STOPED], 0, (gpointer) prj);
 }
 
 
@@ -134,7 +134,7 @@ emit_stoped_signal (gpointer key, gpointer value, gpointer data)
 	GttProject *prj = (GttProject *) key;
 	GttRunningProjects *rp = GTT_RUNNING_PROJECTS (data);
 
-	g_signal_emit (rp, running_projects_signals[PROJECT_STOPED], 0, prj);
+	g_signal_emit (rp, running_projects_signals[PROJECT_STOPED], 0, (gpointer) prj);
 }
 
 static gboolean
