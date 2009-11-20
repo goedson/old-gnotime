@@ -418,6 +418,18 @@ focus_row_set (GttProject *proj)
 	notes_area_set_project (global_na, proj);
 }
 
+void
+app_project_started_handler (GttRunningProjects *rp, GttProject *prj)
+{
+	gtt_projects_tree_update_project_data (projects_tree, prj);
+}
+
+
+void
+app_project_stoped_handler (GttRunningProjects *rp, GttProject *prj)
+{
+	gtt_projects_tree_update_project_data (projects_tree, prj);
+}
 
 /* ============================================================= */
 
@@ -434,6 +446,10 @@ app_new(int argc, char *argv[], const char *geometry_string, GttRunningProjects 
 	GtkStatusbar *grip;
 
 	running_projects = rp;
+
+
+	g_signal_connect (G_OBJECT(rp), "project_started", G_CALLBACK(app_project_started_handler), NULL);
+	g_signal_connect (G_OBJECT(rp), "project_stoped", G_CALLBACK(app_project_stoped_handler), NULL);
 
 	app_window = gnome_app_new(GTT_APP_NAME, GTT_APP_TITLE " " VERSION);
 	gtk_window_set_wmclass(GTK_WINDOW(app_window),

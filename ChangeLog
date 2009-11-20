@@ -1,3 +1,8 @@
+2009-11-19  Goedson Teixeira Paixao  <goedson@debian.org>
+
+	* src/app.c (app_new): Add signal handlers to update the projects
+	tree when projects ares started/stoped.
+
 2009-10-31  Goedson Teixeira Paixao  <goedson@debian.org>
 
 	* src/timer.c (init_timer): connect the signal handlers for the
