@@ -1,0 +1,9 @@
+The select_tit*.png are creating using Gimp 2.6.8 following the receipe:
+1. File => Create =>  Logos => Web title header => <add your text>
+2. Make sure it converts to 212x31 or else add more spaces at the end of the text
+3. Select the top layer (the one with the text). To see the layers use CTRL+L
+4. Color => invert
+5. Combine all layers (right click the layers from top to bottom and merge down)
+6. Color => invert (yes again)
+6. Color => Levels. Select"Channel" Green, then in the "Output level" change the value from 0 to 136. OK
+7. Image => Scale Image 212x31
