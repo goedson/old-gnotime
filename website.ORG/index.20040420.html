@@ -1,0 +1,526 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>GnoTime - The Gnome Time Tracker</title>
+<meta name="description" content="The Gnome Time Tracker is a 
+    desktop todo list tool that tracks time spent on projects.
+    It can generate reports and billing invoices 
+    based on that time.">
+<meta name="keywords" content="gnome, todo, to-do, time tracker,
+    diary, journal, PIM, consultant billing, reports, gtt, linux,
+    workbook">
+
+</head>
+<body fgcolor=#000000 bgcolor=#ffffff>
+<h1>GnoTime - The Gnome Time Tracker</h1>
+
+<A href="http://sourceforge.net"> 
+<IMG src="http://sourceforge.net/sflogo.php?group_id=55463&amp;type=5" 
+width="210" height="62" border="0" align="right" alt="SourceForge Logo"></A>
+
+The Gnome Time Tracker is a to-do list/diary/journal tool
+that can track the amount of time spent on projects, and,
+among other things, generate reports and invoices based on 
+that time.  It's being used it to keep shopping lists, organize ideas, 
+track bug reports, keep a diary of activities, provide 
+weekly status reports to management, and even as a consultant billing
+system.  The reason it can be used for all of these things
+is that it supports five basic, simple features:
+
+     <br><br>
+<ul>
+<li>Multiple <b>To-Do Lists</b> that can be sorted by the 
+    priority/importance of the tasks in the list.  The to-do
+    items can be organized into categories, arranged in a
+    hierarchical way.  This makes it easy to maintain 
+    both business and personal items in the list, or
+    handle many different projects, while keeping them
+    separate from each other.
+     <br><br>
+<li>A pair of <b>Diary/Journal</b> areas that can be used 
+    to keep long and detailed notes and diary entries.
+    The project description area allows a multi-paragraph 
+    description or status to be typed in.  The diary 
+    area allows day-to-day notes to be associated with
+    a set of timestamps, so that one has a record of what
+    one did on any given day.
+     <br><br>
+<li>A <b>Running Timer</b>, with time totals, for each 
+    project/task.  One starts the timer by clicking on a 
+    task: it will measure the amount of time that you are
+    in front of the computer.  If it detects that the 
+    keyboard/mouse are idle, it will stop the clock.  
+    If the clock stays stopped too long, it will nag you to 
+    start it up again.  You can view time totals by day, 
+    week, month or year.
+     <br><br>
+<li>A <b>Billing Status</b> dialog for each diary entry. 
+    You can mark any given diary entry as bill-able/non-bill-able,
+    paid or pending, and set the billing rate. Each
+    project can also be marked up with a set of 
+    project-planning information: planed start, end and 
+    due dates, hours to finish, percent-complete.  
+    This is in addition to assigning an urgency/importance
+    to each project, as well as a status (completed/in-progress
+    not-started/canceled).
+     <br><br>
+<li>A half-dozen different HTML <b>Reports</b> that can
+    slice and dice your lists.  There's a Journal report
+    that shows all of the diary entries for one given project. 
+    There's an Invoice
+    report that summarizes the time spent on each entry,
+    and computes a dollar amount for it.  There's a Status
+    Report that prints the title of each project, together
+    with the paragraph-long descriptions of each.  There's
+    a ToDo report, which prints only the project title, the 
+    importance/urgency, and the completed/in-progress/not-started 
+    status.  The Daily report summarizes the total time
+    spent on a day-by-day basis, and lists each of the projects
+    that were worked on in a given day. Each of these reports
+    can be customized.  And, because they're HTML, you can
+    even publish them as web pages.  (Yes, I've thought of
+    using GnoTime as a weblog management/publishing tool).
+     <br><br>
+</ul>
+
+
+<h2>More About Some of These Features</h2>
+We'd like to tell you a bit more about some of the features.
+But first, we want to tell you that GnoTime is Free Software,
+distributed under the GPL License, for the Linux, Mac OSX and
+other Unix desktops.  No, it does *not* for MS Windows.  Sorry.
+<p>
+<dl>
+<dt><b>Simple GUI, Simple Navigation</b>
+<dd>We've worked to try to make the GUI as simple as we can,
+    and we're not done yet.  GnoTime will auto-save data,
+    so that you don't have to.  (It also means no data loss
+    if something crashes).  The hierarchical tree of projects
+    is managed through drag-n-drop, and can be navigated from
+    the keyboard, with arrows keys and carriage returns.
+    The left/right arrow keys expand/collapse project lists.
+    Hitting return starts and stops the timer.
+     <br><br>
+
+<dt><b>Auto-Merge/Cleanup of Short Intervals Support</b>
+<dd> We also try to unclutter a mess of timer stops/starts
+     by trying to clean up time-keeping cruft.
+     Extremely short time intervals are automatically removed
+     from the logs (the length is configurable).  
+     Slightly longer but still short intervals
+     are auto-merged into nearby neighbors. Short gaps between intervals
+     are coalesced as well.  You can specify a time period of 0 seconds
+     to turn these features off.
+     <br><br>
+
+<dt><b>User-Customizable HTML-based Reports</b>
+<dd>The journal/report GUI is based on template HTML pages.  If you know
+     HTML, then you can create customized report pages.  Particularly
+     handy for slapping the company logo and mailing address on the top 
+     of the page, and generating a unique, custom look.
+     User-defined reports (contained in <tt>ghtml</tt> files) 
+     can be added to the
+     menus by typing in the filename into the 'New Report' GUI dialog.
+     <br><br>
+     Admittedly, hacking on HTML templates is not the easiest
+     thing in the world:  you can't (yet) customize reports
+     with a WYSIWYG editor (although we are contemplating one).
+     But we figure that HTML can't be that hard: the nerd in 
+     you will not be intimidated.  It might be a bit scary to
+     mention scheme at this point, but lets just say that
+     you can be totally ignorant of scheme and still be able
+     to do some pretty fancy customization, above and beyond
+     what HTML lets you do, by hacking on the scheme in the report
+     templates.
+     <br><br>
+     Fresh in version 2.1.9 is the ability to embed simple SQL 
+     queries in the report templates.  We know that many of you
+     power users know SQL, so we figure you'll like this.  The
+     SQL gives you the ability to query for only those projects/tasks
+     that meet a certain criteria, which is handy if you've got 
+     years worth of data and years worth of project lists and 
+     to-do items, and you want to just fish out the ones from 
+     last month.  
+     <br><br>
+     Disclaimer: we're still working on SQL support. It works,
+     but you can't yet query everything.
+     
+     <br><br>
+
+<dt><b>Shell Commands</b>
+<dd>A shell command can be executed whenever a project timer is 
+    started or stopped.  The project title, description and other 
+    parameters can be passed to the shell command.  We don't know
+    what the hell you power users do with this feature; its 
+    been in GTT since the very earliest releases. 
+     <br><br>
+
+<dt><b>XML File Format</b>
+<dd>All project and journal data are stored in an XML file format.
+    This should simplify future interoperability and data access concerns.
+    <br><br>
+
+<dt><b>Multi-Language Support</b>
+<dd>The GnoTime menus and messages have been translated to dozens of 
+    languages.  There are message catalogs for the following locales:
+    <tt>
+    az bg ca cs da de el en_GB es et eu fi fr ga gl hu it ja ko lt lv ms nl
+    nn no pl pt pt_BR ro ru sk sl sv ta tr uk vi wa zh_CN zh_TW
+    </tt>
+    Some of these translations need an update; they're quite old and
+    out of date. We need help here.
+    Translations are needed for the manual. Actually, the manual needs 
+    a complete re-write; its three years old, and doesn't discuss most 
+    of the newer features.
+    <br><br>
+</dl>
+
+<h1>Screenshots</h1>
+The following screenshots are from the current Gnome2 version of
+GnoTime, unless otherwise noted.
+<br><br>
+The main window screen, showing all-time and daily totals:
+<br>
+<img src="gnome2-main-small.png">
+<br><br>
+
+The same main window screen, but with additional columns
+enabled to show project status.   Note the new notes-taking
+area at the bottom of the screen.
+<br>
+<img src="gnome2-main-notes.png">
+<br><br>
+
+The inactivity popup dialog, which triggers when
+the keyboard and mouse has been idle some period of time.
+Note how this allows a project to be credited with an 
+adjustable amount of time.  Being able to adjust the time
+credited directly, without having to fuss with menus and 
+GUI dialogs is a very handy feature when you are distracted by 
+interruptions.
+<br>
+<img src="gnome2-idle-timeout.png">
+<br><br>
+The dialog box for specifying project-planning status.
+The use of this dialog is optional, but can be useful for 
+ranking the importance and urgency of to-do list items.
+Note the distinction between importance and urgency:
+An <b><i>important</i></b> task is one that must be done,
+sooner or later.  An <b><i>urgent</i></b> task should be
+done as soon as possible.
+<br>
+<img src="gnome2-proj-plan.png">
+<br><br>
+
+Below is the short-form view of journal entries
+(this screenshot is from the gnome-1.4.1 version).
+Note that this report is is generated as HTML, 
+displayed in a gtkhtml window.
+Clicking on the hot-links brings up a popup
+menu that allows you to cut, paste and edit the entries.
+
+You can create much better looking reports by modifying
+the HTML template for this report.  If you know HTML,
+this is easy to do.
+<br>
+<img src="journal.gif">
+<br><br>
+
+An invoice generated from the above journal.
+(this screenshot is from the gnome-1.4.1 version).
+Note that this report is is generated as HTML, 
+displayed in a gtkhtml window.
+Clicking on the hot-links brings up a popup
+menu that allows you to cut, paste and edit the entries.
+
+You can create much better looking reports by modifying
+the HTML template for this report.  If you know HTML,
+this is easy to do.
+
+<br>
+<img src="invoice.gif">
+<br><br>
+
+Individual time intervals may be modified.
+<br>
+<img src="ivl-props.gif">
+<br><br>
+
+Per-project billing rates can be specified ...
+<br>
+<img src="proj-rates.gif">
+<br><br>
+
+As well as how an individual task should be billed.
+<br>
+<img src="task-props.gif">
+<br><br>
+
+
+<h2>Works on Apple Mac OSX too</h2>
+Here's a screenshot under Macintosh OSX Fink:
+<br>
+<img src="mac-osx.png">
+<br><br>
+
+<h1>Getting GnoTime</h1>
+Your favorite distribution (Debian, RedHat/Fedora, SUSE, Fink) already
+includes pre-compiled binaries of GnoTime, and you should probably
+be searching those out, and installing and working with those.
+That way, you at least have some guarantee that its been tested 
+and is known to work with your system.
+<p>
+If you are adventurous, and know how to compile from source, 
+and absolutely must have the latest and greatest version, then
+visit 
+<a href="http://sourceforge.net/projects/gttr/">http://sourceforge.net/projects/gttr/</a>
+to get the source-code tarballs, instructions for CVS access, etc.
+
+<h2>Reporting Bugs, Requesting Features, Submitting Patches</h2>
+If you found a bug, please rest assured that we will 
+<b><i>not</i></b> fix it unless you report it (and even then,
+it may take us a while).  To report a bug, please visit the
+<a href="http://sourceforge.net/projects/gttr/">SourceForge 
+project site</a>, and follow the links.
+The same remarks apply for feature requests and patches.
+The best place to submit a patch is to sourceforge.  That
+way, we won't loose track of it.
+
+<h2>Mailing Lists</h2>
+If you have questions, want to make comments, or engage in 
+general discussions, you can subscribe to the mailing list,
+or you can post to the discussion bulletin-board.  You can get
+to either through the 
+<a href="http://sourceforge.net/projects/gttr/">SourceForge 
+project page</a>.
+
+<h2>Web Site Mirrors</h2>
+There are two web site mirrors:
+<ul>
+<li><a href="http://www.linas.org/linux/gtt/gtt.html">http://www.linas.org/linux/gtt/gtt.html</a>
+<li><a href="http://gttr.sourceforge.net/">http://gttr.sourceforge.net/</a>
+</ul>
+
+<h2>WE NEED YOUR HELP !!</h2>
+We need your help to make GnoTime better.  It sure would be nice to
+have a fancier web site for this project, maybe some nice graphics.
+Can you help?
+
+<h1>News</h1>
+The latest releases continues to focus on usability and convenience 
+features, making GnoTime easier to use and thus more powerful.
+
+    <br><br>
+<dl>
+
+<dt><b>New in the 2.1.9 release</b> (April 2004)
+<dd>This release fixes a number of bugs in earlier releases.
+    <ul>
+    <li> Keyboard events were not resetting the timeout
+    <li> Fix Help system so that help actually starts up.
+    <li> Fix old, multiple scheme bugs affecting billing reports.
+    <li> Provides 'infinite undo' for cut projects.
+    <li> Keyboard cut (ctrl-x) fixed so that it cuts only if project
+       window has focus.
+    <li> Can now specify day-of-week for the start of a new week.
+       Also, end-of-day need not be midnight - its now configurable.
+    <li> Remove obsolete menu entries (clear daily counters)
+    <li> Fix flyover help on HTML reports
+    <li> Fix order of yesterday/today columns.
+    <li> Improve checks for Guile during builds
+    <li> New whiz-bang SQL for reports.
+    </ul>
+    <br><br>
+
+
+<dt><b>New in the 2.1.8 release</b> (April 2004)
+<dd>This release adds support for simple report queries.  In particular,
+    reports can now be generated for all tasks that occurred between a
+    pair of dates;  an extremely general query system is now in place,
+    although it is not used except to perform this simple date query.
+    <br><br>
+    Toshio Kuratomi provided a major cleanup of the documentation 
+    subsystem.  Goedson Teixeira Paixao provided a new pt_BR translation.
+    A variety of minor bugs were fixed, including a crash of the 
+    'yelp' help browser.
+    <br><br>
+
+<dt><b>New in the 2.1.7 release</b> (June 2003)
+<dd>Version 2.1.7 fixes some internationalization bugs, and ports the 
+    configuration system to GConf2. The 'custom reports' menu is now 
+    editable.  
+    <br><br>
+
+<dt><b>New in the 2.1.6 release</b>
+<dd>The "Daily Report" will show not only the total hours worked,
+    day by day, but will also show a bulleted list of tasks worked 
+    that day.  The main window display can now show total hours worked
+    for previous day and previous week.  Sub-projects can now be fetched 
+    via scheme, allowing them to be included in reports.  The scheme
+    subsystem now includes an elementary type system, allowing more
+    complex structures to be built.  A half-dozen different crashes 
+    have been fixed.
+    <br><br>
+
+<dt><b>New in the 2.1.5 release</b> (January 2003)
+<dd>The main window has been reformulated in a big way:  It
+    now includes sub-panels for editing project and diary notes.
+    This 'notes area' makes it far more convenient to make
+    extensive notes and 'blog' your way through a set of projects.
+    <br><br>
+    Also fixes bugs with backup timestamps, also with cut-n-paste
+    of project trees.
+    <br><br>
+
+<dt><b>New in the 2.1.4 release</b> (December 2002)
+<dd>The scheme interface re-design has been finished.
+    This means that the HTML reports are far, far more
+    configurable, and can be made to look much prettier.
+    The old, nasty table-formatting features have been removed.
+    It also means that tab-delimited export now works cleanly,
+    and other export formats can be easily added.
+    <br><br>
+
+<dt><b>Older News</b>
+<dd><a href="gtt-old-news.html">Click here for older news items.</a>
+<p>
+</dl>
+<br><br>
+
+<p>
+<h1>Technology Choices/Overview</h1>
+GnoTime is currently written in C and Scheme. C is used to implement 
+all of the core functions, whereas Scheme is used to generate the 
+HTML reports.  The Scheme/HTML combo was chosen in order to make
+it easy to customize reports, while allowing the result to be easily
+viewed in a browser, sent by email, etc.  The GUI system is 
+all in Gnome, using the Glade interface designer.
+The file format is in XML, following current trends.
+<br><br>
+
+
+<h1>Roadmap</h1>
+GnoTime still needs some serious work in several areas. Help is needed.
+<dl>
+<dt><b>GUI Enhancements</b>
+<dd>The GUI can be made simpler, easier and more powerful at the same
+    time.   This is my current development focus: improve usability
+    without adding feature bloat.  Easier said than done.
+    <br><br>
+
+<dt><b>E-Mail Reports</b>
+<dd>There are two things I'd like to do that one would think are real
+    easy: add a button allowing a report to be emailed, and add a button
+    to automatically view a report with your default web browser.
+    Amazingly, this is quite hard, and at this time, Gnome offers no
+    infrastructure to make this easy.
+    <br><br>
+
+<dt><b>Better Report Generation</b>
+<dd>Certain reports, especially the invoice reports, would benefit
+    from a better report generator.  I'd like to add buttons to
+    show/hide completed projects, etc.  If nothing else, the 
+    set of things that are SQL-queriable needs to be expanded.
+    <br><br>
+
+<dt><b>GnuCash Integration</b>
+<dd>It should be possible to import GnoTime invoices into GnuCash.
+    <br><br>
+
+<dt><b>SQL Support</b>
+<dd>A frequent request is for a multi-user version of GnoTime.
+    A basic level of multi-user capabilities can be achieved by
+    adding support for an SQL backend.  We've got some neat
+    ideas on how to make this work in an easy and future-proof
+    manner.  We're planning on using
+    <a href="http://dwi.sourceforge.net">DWI/DUI</a>.
+    This work might be just around the corner.
+    <br><br>
+
+<dt><b>Web Tinkering</b>
+<dd>GnoTime already uses some of the buzzwords of the web: HTML and XML.
+    That makes it an interesting playground for experimenting with
+    web-enabling technology.  Can it be made into a client-server
+    system, running on the open Internet? We think it can.
+    I'm planning on tinkering 
+    <a href="http://dwi.sourceforge.net">DWI/DUI</a> and 
+    <a href="http://qof.sourceforge.net">QOF</a> into this.
+    <br><br>
+
+<dt><b>Super-Configurability</b>
+<dd>The third prong of my goofing off with 
+    <a href="http://dwi.sourceforge.net">DWI/DUI</a> and 
+    <a href="http://qof.sourceforge.net">QOF</a> is to make 
+    the core objects super-configurable.  This means that
+    if you don't like the status that a project can have,
+    then you can change the menu system.  Want to make 
+    GnoTime look more like a bug-tracker, such as Bugzilla?
+    You'll be able to do that. Someday. Maybe.  Want to 
+    make it look like a call-center/support tool? Sure.
+    How about a simpler employee time-card system. Yep.
+    GnoTime is a partly a finished product, and partly 
+    a research vehicle, and the above are some of the 
+    directions I want to explore.
+    See the list of 
+    <a href="http://www.linas.org/linux/pm.html">
+    Linux Bug Tracking and Project Management Tools</a>
+    to see how the rainbow of possibilities is really 
+    a rainbow of very similar things that just look 
+    very different.
+    <br><br>
+
+<dt><b>Project Management Integration</b>
+<dd>It might be interesting to have GnoTime work as applet or 
+    embedable component for an extended/sophisticated project 
+    management system.  For example, it should be interesting to make
+    GnoTime a front end to something like 
+    <a href="http://www.gnu.org/software/toutdoux/en/index.html">TouxDoux</a>, 
+    or <a href="http://mrproject.codefactory.se/">MrProject</a>
+    or even the web/PHP-based 
+    <a href="http://dcl.sourceforge.net/">
+    Double Choco Latte</a>.  Alternately, GnoTime could
+    be integrated into simpler calendar/todo systems, such as Evolution. 
+
+</dl>
+
+
+<h2>Similar/Different Projects</h2>
+
+<ul>
+<li><a href="http://www.adebenham.com/gournal/">Gournal</a>,
+    Note-taking tablet application.  A paper-like interface
+    allows you to hand-write notes. This is a gnome app
+    (actually, gtk2/perl).
+<li><a href="http://www.dklevine.com/general/software/tc1000/jarnal.htm">
+    Jarnal</a>, a Java-based note-taking tablet app.
+<li><a href="http://qballcow.nl/index.php?s=4">QBall's GToDo</a>   
+    is a simple Gnome2 to-do list application.
+<li><a href="http://quozl.us.netrek.org/gfocustimer/">Quozl's GFocusTimer</a>
+    tracks which windows your mouse is in.
+<li><a href="http://www.radix.net/~cknudsen/gtimer/">GTimer</a>,
+    an older gtk-1.2 timer application.
+<li><a href="http://www.ph.unimelb.edu.au/~ssk/kde/karm/karm.html">KArm</a>
+    is a simple KDE/Qt-based time-tracker.
+    See also <a href="http://www.blackie.dk/karm/">this website</a>.
+<li><a href="http://www.ele.auckland.ac.nz/~swon074/ptt-web/ptt.html">PTT</a>
+    another KDE-based time tracker.
+<li><a href="http://www.alvestrand.no/titrax/TimeTracker.html">Titrax</a>
+    is a very old (early/mid 90's) X-Windows time tracking tool.
+    This is a nice historical snapshot providing a glimpse of the
+    way things used to be in the Unix world back then.
+<li><a href="http://www.linuxlinks.com/Software/ProductivityTools/Timers/index.shtml">LinuxLinks</a>
+    provides a <b><i>huge</i></b> list of Linux timer software.
+<li><a href="http://journyx.com/">Journyx</a>, an up-scale, commercial
+    web-based time tracking and billing tool.
+</ul>
+
+
+<hr>
+Last modified by Linas Vepstas &lt;linas@linas.org&gt;
+March 2004
+<br>
+In memory of the World Trade Center bombing, which occurred while
+the first major revision of gtt was being written.
+</body>
+</html>
+

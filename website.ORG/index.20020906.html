@@ -1,0 +1,221 @@
+<html>
+<head>
+<title>GnoTime - The Gnome Time Tracker</title>
+</head>
+<body fgcolor=#000000 bgcolor=#ffffff>
+<h1>GnoTime (formerly known as GTT) - The Gnome Time Tracker</h1>
+<A href="http://sourceforge.net"> 
+<IMG src="http://sourceforge.net/sflogo.php?group_id=55463&amp;type=5" 
+align=right width="210" height="62" border="0" alt="SourceForge Logo"></A>
+<br>
+<p><b>Note:</b> We are currently in the process of moving things 
+over to sourceforge.
+This is the old web page, which should give you some idea what we're
+about.</p>
+
+The Gnome Time Tracker is a desktop utility for tracking
+the amount of time spent on projects, and generating configurable
+invoices based on that time.  
+<p>
+GTT has the following features:
+<dl>
+<dt><b>Basic Stop-Watch Support</b>
+<dd>At its core, GTT is a fancy stop-watch: you can click on
+    an icon to start and stop one of any number of timers.
+    It is the times measured by these clocks that make up
+    the core data that GTT works with.
+    <br><br>
+
+<dt><b>Project Planning Support</b>
+<dd>Well, OK, "project planning" may be an overstatment.  But GTT
+    does provide basic to-do list support, including the ability 
+    to rank by importance and urgency, specify expected start/stop
+    times, state the project status, and estimate the amount of
+    time needed to complete the project.
+    <br><br>
+
+<dt><b>Basic Billing/Invoicing Support</b>
+<dd>Infrastructure for storing price & billing information has been
+     put into place.  This allows billing invoices to be generated.
+     Tasks can be marked as billable, non-billable, on-hold, or 
+     free-of-charge. Billing rates for regular, overtime, 
+     double-overtime or flat-fee can be set per task.  
+     (Fancier-looking invoices still needed).
+     <br><br>
+
+<dt><b>Sub-Project Support</b>
+<dd>New projects can be listed 
+     as sub-projects of other projects.  The time totals will show 
+     the total including sub-projects.  The Hierarchical tree can be 
+     expanded / collapsed to simplify viewing.  The tree can be 
+     re-arranged by dragging-n-dropping projects.
+     <br><br>
+
+<dt><b>Simpler Navigation</b>
+<dd>Arrow keys and carriage return now work in the main window.
+     Up/down keys can be used to move up & down.  The left/right arrow
+     keys expand/collapse a sub-project list.  Hitting return selects
+     the project.
+     <br><br>
+
+<dt><b>Log Journal</b>
+<dd>A journal showing explicit start and stop times is maintained.
+     Blocks of time can be annotated with memos.  The journal can be 
+     exported as an html page, or printed (OK, printer support not
+     yet finished).
+     <br><br>
+
+<dt><b>Auto-merge/cleanup of Short Intervals Support</b>
+<dd>Extremely short
+     intervals (the length is configurable) are automatically removed
+     from the logs.  Slightly longer but still short intervals
+     are auto-merged into nearby neighbors. Short gaps between intervals
+     are coalesced as well.  You can specify a time period of 0 seconds
+     to turn these features off.
+     <br><br>
+
+<dt><b>HTML-based GUI</b>
+<dd>The journal GUI is based on extended html pages.  If you know
+     HTML, then you can create customized report pages.  Particularly
+     handy for slapping the company logo and mailing address on the top 
+     of the page, and generating a unique, custom look.
+     User-defined reports (contained in ghtml files) can be added to the
+     menus by typing in the filename into the 'new report' GUI dialog.
+     Typically, a 'user-defined report' is one with customized layout,
+     maybe a logo added, all-spiffed up & such.
+     <br><br>
+
+<dt><b>Inactivity Timeout</b>
+<dd>An inactivity timeout has been implemented. If the keyboard
+     or mouse have been idle for more than some period of time, then 
+     the clock is stopped.
+     <br><br>
+
+<dt><b>Shell Commands</b>
+<dd>A shell command can be executed whenever a project timer is 
+    started or stopped.
+     <br><br>
+
+<dt><b>Scheme Extension Language</b>
+<dd>Scheme (guile) is used as an extension language, although scheme
+     support is currently limited to report generation.
+     <br><br>
+
+<dt><b>XML File Format</b>
+<dd>All project and journal data are stored in an XML file format.
+    This should simplify future interoperability and data access concerns.
+    <br><br>
+
+<dt><b>Multi-Language Support</b>
+<dd>The basic GTT menus have been translated to dozens of languages.
+    Translations are need for the manual. (Actually, the manual needs 
+    a re-write).
+    <br><br>
+</dl>
+
+<h1>Roadmap</h1>
+Volunteers are needed to take GTT in a variety of possible directions:
+<dl>
+<dt><b>Better Billing Support</b>
+<dd>Better and more complex invoices are needed, as well as the ability
+    bill line items.  Part of this work should be better integration 
+    with GnuCash.
+    <br><br>
+<dt><b>SQL Support</b>
+<dd>A basic level of multi-user capabilities can be achieved by
+    adding support for an SQL backend.  This should be relatively easy,
+    as all of the project and journal functions were segregated when
+    the XML file format was added.
+    <br><br>
+<dt><b>ASP Model</b>
+<dd>A web-like client server system that could work over the open Internet
+    is possible, and shouldn't be too hard.  GTT now contains an html viewer,
+    and the XML file format should be usable for a network interface.
+    <br><br>
+<dt><b>Project Management Integration</b>
+<dd>GTT is ready to act as an applet for an extended/sophisticated project 
+    management system.  For example, it should be interesting to make
+    GTT a front end to something like TouxDoux.  Alternately, GTT could
+    be integrated into simpler calendar/todo systems, such as Evolution. 
+
+</dl>
+
+
+<h1>Screenshots</h1>
+The main window screen, showing all-time and daily totals:
+<br>
+<img src="main.gif">
+<br><br>
+
+The same main window screen, but configured for 
+showing project status.
+<br>
+<img src="main-plan.gif">
+<br><br>
+
+The dialog box for specifying project-planning status.
+<br>
+<img src="proj-plan.gif">
+<br><br>
+
+Below is the short-form view of journal entries.
+<br>
+<img src="journal.gif">
+<br><br>
+
+An invoice generated from the above journal.
+<br>
+<img src="invoice.gif">
+<br><br>
+
+Individual intervals may be edited
+<br>
+<img src="ivl-props.gif">
+<br><br>
+
+Per-project billing rates can be specified ...
+<br>
+<img src="proj-rates.gif">
+<br><br>
+
+As well as how an individual task should be billed.
+<br>
+<img src="task-props.gif">
+<br><br>
+
+<h1>Getting GnoTime</h1>
+Visit <a href="http://sourceforge.net/projects/gttr/">http://sourceforge.net/projects/gttr/</a>
+<p>
+Note that GTT/GnoTime used to be available as a part of the gnome-utils
+package (this is still true, in fact, for the gnome-utils-1.4 branch).
+It is <b>NO LONGER A PART OF GNOME_UTILS-2.0</b>
+<p>
+Pre-compiled binaries (none yet):
+<p>
+If you are interested in gtt version 1.4, and want the most 
+recent gnome-1.4 CVS source, you
+should check out the gnome-1.4 branch, as follows:
+<tt>
+cvs -z3 -d :pserver:anonymous@anoncvs.gnome.org:/cvs/gnome checkout -r
+gnome-utils-1-4 gnome-utils
+</tt>
+
+Please note that the gnome-1.4 branch fixes some critical gtt
+bugs!  Please note that these fixes are NOT in the latest gnome-utils
+tarball!  This means that e.g. Debain-unstable will install a down-level,
+buggy version of gtt :-(.   Sigh ...
+<p>
+
+The bug tracker is at
+http://bugzilla.gnome.org
+<p>
+
+<hr>
+Last modified by Linas Vepstas <linas@linas.org>
+Fri Sep  6 20:14:46 CDT 2002
+<br>
+In memory of the World Trade Center bombing, when a lot of the gtt 
+code got written.
+</body>
+</html>
+
